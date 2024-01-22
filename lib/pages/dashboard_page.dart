@@ -10,6 +10,13 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
+  final _selectedBody = [
+    // NewsFeedPage(),
+    // SearchPage(),
+    // AddNewPostPage(),
+    // ReelsPage(),
+    // ProfileDetailPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +24,7 @@ class _DashboardPageState extends State<DashboardPage> {
         appBar: AppBar(
           title: const Text(SourceString.titleAppBar),
         ),
-        body: const Center(
-          child: Text(""),
-        ),
+        body: _selectedBody[_selectedIndex] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -54,38 +59,6 @@ class _DashboardPageState extends State<DashboardPage> {
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           onTap: (int index){
-            switch(index){
-              case 0:
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => NewsFeedPage()),
-              // );
-                break;
-              case 1:
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => SearchPage()),
-              // );
-                break;
-              case 2:
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => AddNewPostPage()),
-              // );
-                break;
-              case 3:
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ReelsPage()),
-              // );
-                break;
-              case 4:
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => ProfileDetailPage()),
-              // );
-                break;
-            }
             setState(() {
               _selectedIndex = index;
             });
@@ -94,3 +67,4 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
+
