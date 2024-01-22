@@ -7,4 +7,10 @@ class SourceString{
   static const String add = "Add";
   static const String reels = "Reels";
   static const String profile = "Profile";
+  static const String username = "Username";
+  static const String chat = "Chat";
+  static const String messages = "Messages";
+  static const String messageRequests = "Requests";
+  static const String messageChat = "Hello, how are youuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu?";
+  static const String messageTime = "1h";
 }
