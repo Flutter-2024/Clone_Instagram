@@ -1,7 +1,8 @@
 import 'package:clone_instagram/constants/SourceString.dart';
-import 'package:clone_instagram/pages/profile/account_change_bts.dart';
+import 'package:clone_instagram/pages/profile/bottom_sheet/account_change_bts.dart';
+import 'package:clone_instagram/pages/profile/bottom_sheet/hamburger_bts.dart';
+import 'package:clone_instagram/pages/profile/bottom_sheet/post_create_bts.dart';
 import 'package:flutter/material.dart';
-
 class ProfileAppBar extends StatelessWidget{
   const ProfileAppBar({super.key});
 
@@ -31,9 +32,37 @@ class ProfileAppBar extends StatelessWidget{
               color: Colors.black,
             ),
             const Spacer(),
-            Image.asset("assets/images/add_new_post.png"),
+            InkWell(
+                child: Image.asset("assets/images/add_new_post.png"),
+                onTap: (){
+                  showModalBottomSheet(
+                    context: context,
+                    clipBehavior: Clip.antiAlias,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                    ),
+                    builder: (BuildContext context) {
+                      return const PostCreateBts();
+                   },
+                  );
+                },
+            ),
             const SizedBox(width: 20,),
-            Image.asset("assets/images/hamburger.png"),
+            InkWell(
+                child: Image.asset("assets/images/hamburger.png"),
+                onTap: (){
+                  showModalBottomSheet(
+                    context: context,
+                    clipBehavior: Clip.antiAlias,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+                    ),
+                    builder: (BuildContext context) {
+                      return const HamburgerBts();
+                    },
+                  );
+                },
+            ),
             const SizedBox(width: 10,)
         ],
       );
