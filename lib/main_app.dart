@@ -14,7 +14,7 @@ class CloneInstagramApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const ChatPage(),
+      home: const DashboardPage(),
     );
   }
 }
