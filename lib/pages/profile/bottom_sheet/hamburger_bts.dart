@@ -1,6 +1,6 @@
+import 'package:clone_instagram/constants/SourceString.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../constants/SourceString.dart';
 
 class HamburgerBts extends StatelessWidget{
   const HamburgerBts({super.key});
@@ -14,34 +14,34 @@ class HamburgerBts extends StatelessWidget{
           Divider(thickness: 3,indent: (width / 2) - 50,endIndent: (width / 2) - 50,),
           const SizedBox(height: 10,),
 
-          getTypeCreate(name: "Cài đặt và quyền riêng tư", icon: const FaIcon(FontAwesomeIcons.gear)),
+          getTypeCreate(name: SourceString.settingAndPrivacy, icon: const FaIcon(FontAwesomeIcons.gear)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Threads", icon: const FaIcon(FontAwesomeIcons.threads)),
+          getTypeCreate(name: SourceString.threads, icon: const FaIcon(FontAwesomeIcons.threads)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Hoạt động của bạn", icon: const FaIcon(FontAwesomeIcons.image)),
+          getTypeCreate(name: SourceString.activity, icon: const FaIcon(FontAwesomeIcons.image)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Kho lưu trữ", icon: const FaIcon(FontAwesomeIcons.clockRotateLeft)),
+          getTypeCreate(name: SourceString.archive, icon: const FaIcon(FontAwesomeIcons.clockRotateLeft)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Mã QR", icon: const FaIcon(FontAwesomeIcons.qrcode)),
+          getTypeCreate(name: SourceString.qrCode, icon: const FaIcon(FontAwesomeIcons.qrcode)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Đã lưu", icon: const FaIcon(FontAwesomeIcons.bookBookmark)),
+          getTypeCreate(name: SourceString.saved, icon: const FaIcon(FontAwesomeIcons.bookBookmark)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Giám sát", icon: const FaIcon(FontAwesomeIcons.userGroup)),
+          getTypeCreate(name: SourceString.supervise, icon: const FaIcon(FontAwesomeIcons.userGroup)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Đơn đặt hàng và thanh toán", icon: const FaIcon(FontAwesomeIcons.creditCard)),
+          getTypeCreate(name: SourceString.orderAndPayment, icon: const FaIcon(FontAwesomeIcons.creditCard)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Bạn thân", icon: const FaIcon(FontAwesomeIcons.bars)),
+          getTypeCreate(name: SourceString.closeFriends, icon: const FaIcon(FontAwesomeIcons.bars)),
           const Divider(indent: 48,),
 
-          getTypeCreate(name: "Yêu thích", icon: const FaIcon(FontAwesomeIcons.star)),
+          getTypeCreate(name: SourceString.favorite, icon: const FaIcon(FontAwesomeIcons.star)),
           const Divider(indent: 48,),
 
         ]

@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-
 import '../../data/list_highligt.dart';
 
 class HighlightStories extends StatelessWidget{

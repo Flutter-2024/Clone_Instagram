@@ -1,7 +1,6 @@
 import 'package:clone_instagram/constants/SourceString.dart';
 import 'package:clone_instagram/pages/profile/account_app.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../data/list_account.dart';
 
