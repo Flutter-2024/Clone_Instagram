@@ -1,5 +1,5 @@
-
-
+import 'package:clone_instagram/pages/profile/highlight_stories.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeader extends StatelessWidget{
@@ -11,13 +11,13 @@ class ProfileHeader extends StatelessWidget{
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
-      child: const Padding(
-        padding: EdgeInsets.only(left: 18, right: 18, bottom: 10),
+      child:  Padding(
+        padding: const EdgeInsets.only(left: 18, right: 18, bottom: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10,),
-            Row(
+            const SizedBox(height: 10,),
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children :[
@@ -68,16 +68,66 @@ class ProfileHeader extends StatelessWidget{
                 ),
               ]
             ), 
-            SizedBox(height: 10),
-            Text("Dũng Hoàng",
+            const SizedBox(height: 10),
+            const Text("Dũng Hoàng",
               style: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w700
               ),),
+            const Text("2003",
+              style: TextStyle(
+                  fontSize: 15,
+              ),),
+            const SizedBox(height: 10,),
+            actionButtonProfile(),
+            const SizedBox(height: 10,),
+            const HighlightStories()
           ],
         ),
       ),
     );
   }
 
+  Row actionButtonProfile(){
+    return  Row(
+      children: [
+        Expanded(
+            child: TextButton(onPressed: () {  },
+              style: TextButton.styleFrom(
+                  backgroundColor: const Color(0x1F000000),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)
+                  )
+              ),
+              child: const Text("Chỉnh sửa"),
+            )
+        ),
+        const SizedBox(width: 3,),
+        Expanded(
+            child: TextButton(onPressed: () {  },
+              style: TextButton.styleFrom(
+                  backgroundColor: const Color(0x1F000000),
+                  foregroundColor: Colors.black,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)
+                  )
+
+              ),
+              child: const Text("Chia sẻ trang cá nhân"),
+            )
+        ),
+        IconButton(
+            onPressed: () {},
+            icon: const FaIcon(FontAwesomeIcons.userPlus, size: 20,),
+            style: IconButton.styleFrom(
+              backgroundColor: const Color(0x1F000000),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12)
+              )
+            ),
+        )
+      ],
+    );
+  }
 }

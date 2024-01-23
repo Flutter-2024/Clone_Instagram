@@ -1,4 +1,6 @@
+import 'package:clone_instagram/data/list_post_type.dart';
 import 'package:flutter/material.dart';
+
 import '../../../constants/SourceString.dart';
 
 class PostCreateBts extends StatelessWidget{
@@ -17,24 +19,27 @@ class PostCreateBts extends StatelessWidget{
           textAlign: TextAlign.center,
         ),
         const Divider(),
-        getTypeCreate(name: "Thước phim", picture: "assets/images/film.png"),
+        _getTypeCreate(name: "Thước phim", picture: "assets/images/film.png"),
         const Divider(indent: 48,),
-        getTypeCreate(name: "Bài viết", picture: "assets/images/post.png"),
+        _getTypeCreate(name: "Bài viết", picture: "assets/images/post.png"),
         const Divider(indent:48,),
-        getTypeCreate(name: "Tin", picture: "assets/images/add.png"),
+        _getTypeCreate(name: "Tin", picture: "assets/images/add.png"),
         const Divider(indent:48,),
-        getTypeCreate(name: "Tin nổi bật", picture: "assets/images/heart.png"),
+        _getTypeCreate(name: "Tin nổi bật", picture: "assets/images/heart.png"),
         const Divider(indent:48,),
-        getTypeCreate(name: "Trực tiếp", picture: "assets/images/heart.png"),
+        _getTypeCreate(name: "Trực tiếp", picture: "assets/images/heart.png"),
         const Divider(indent:48,),
-        getTypeCreate(name: "Dành cho bạn", picture: "assets/images/heart.png"),
+        _getTypeCreate(name: "Dành cho bạn", picture: "assets/images/heart.png"),
       ]
     );
   }
-  ListTile getTypeCreate({required String name, required String picture}){
+  ListTile _getTypeCreate({required String name, required String picture}){
     return ListTile(
-        title: Text(name),
-        leading: Image.asset(picture),
+      dense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0.0),
+      visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
+      title: Text(name),
+      leading: Image.asset(picture),
     );
   }
 }
