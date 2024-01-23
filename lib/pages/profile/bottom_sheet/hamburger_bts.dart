@@ -49,6 +49,9 @@ class HamburgerBts extends StatelessWidget{
   }
   ListTile getTypeCreate({required String name, required FaIcon icon}){
     return ListTile(
+      dense: true,
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0.0),
+      visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
       title: Text(name),
       leading: icon
     );
