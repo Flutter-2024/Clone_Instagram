@@ -1,3 +1,4 @@
+import 'package:clone_instagram/constants/source_image.dart';
 import 'package:clone_instagram/pages/profile/tab/post_tab.dart';
 import 'package:clone_instagram/pages/profile/tab/reels_tab.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -27,10 +28,10 @@ class ProfileContent extends StatelessWidget{
             TabBar(
               tabs: [
                 Tab(
-                  icon: Image.asset("assets/images/post.png"),
+                  icon: Image.asset(SourceImage.post),
                 ),
                 Tab(
-                  icon: Image.asset("assets/images/film.png"),
+                  icon: Image.asset(SourceImage.film),
                 ),
                  const Tab(icon: FaIcon(FontAwesomeIcons.usersViewfinder),)
               ],
