@@ -37,27 +37,27 @@ class PostTab extends StatelessWidget {
           },
           child: Container(
             color: Colors.black.withOpacity(0.7),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: ClipRRect(
-                  // padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ClipRRect(
+                // padding: const EdgeInsets.symmetric(horizontal: 16),
                   borderRadius: BorderRadius.circular(20),
                   child: ListView(
                     shrinkWrap: true,
                     padding: const EdgeInsets.all(0),
                     children: [
                       _createPhotoTitle(),
-                      Image.network(
-                      url,
-                      fit: BoxFit.fitWidth,
+                      Container(
+                        constraints: BoxConstraints(maxHeight: 420
+                        , maxWidth: MediaQuery.of(context).size.width,
+                        ),
+                        child: Image.network(
+                          url,
+                          fit: BoxFit.fitWidth,
+                        ),
                       ),
                     ],
                   )
-                ),
               ),
             ),
           ),
