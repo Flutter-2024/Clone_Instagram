@@ -36,12 +36,12 @@ class ProfileContent extends StatelessWidget{
                  const Tab(icon: FaIcon(FontAwesomeIcons.usersViewfinder),)
               ],
             ),
-            const Expanded(
+             Expanded(
                 child: TabBarView(
                   children: [
                     PostTab(),
-                    ReelsTap(),
-                    Text("Tab3")
+                    const ReelsTap(),
+                    const Text("Tab3")
                   ],
                 )
             )
