@@ -1,3 +1,4 @@
+import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/pages/profile/highlight_stories.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
@@ -17,69 +18,48 @@ class ProfileHeader extends StatelessWidget{
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 10,),
-            const Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children :[
-                CircleAvatar(
+                const CircleAvatar(
                   backgroundImage: NetworkImage("https://cdn-icons-png.flaticon.com/512/6386/6386976.png"),
                   radius: 36,
                 ),
-                Column(children: [
-                  Text("0",
-                    style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w700
-                    ),),
-                  Text("Bài viết",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500
-                    ),),
+                 Column(children: [
+                  Text(SourceString.numPost,
+                    style: _textStyleBold(),),
+                  Text(SourceString.post,
+                    style: _textStyleNormal(),),
+                ],
+                ),
+
+                 Column(children: [
+                  Text(SourceString.numFollowers,
+                    style: _textStyleBold(),),
+                  Text(SourceString.followers,
+                    style: _textStyleNormal(),),
                 ],
                 ),
 
                 Column(children: [
-                  Text("123",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700
-                    ),),
-                  Text("Người theo dõi",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500
-                    ),),
-                ],
-                ),
-
-                Column(children: [
-                  Text("2344",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700
-                    ),),
-                  Text("Đang theo dõi",
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500
-                    ),),
+                  Text(SourceString.numFollowing,
+                    style: _textStyleBold(),),
+                  Text(SourceString.following,
+                    style: _textStyleNormal(),),
                 ],
                 ),
               ]
-            ), 
+            ),
             const SizedBox(height: 10),
-            const Text("Dũng Hoàng",
-              style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700
-              ),),
-            const Text("2003",
+            Text(SourceString.userName,
+              style: _textStyleBold(),),
+            const Text(SourceString.yearOfBirth,
               style: TextStyle(
                   fontSize: 15,
               ),),
             const SizedBox(height: 10,),
-            actionButtonProfile(),
+            _actionButtonProfile(),
             const SizedBox(height: 10,),
             const HighlightStories()
           ],
@@ -88,7 +68,7 @@ class ProfileHeader extends StatelessWidget{
     );
   }
 
-  Row actionButtonProfile(){
+  Row _actionButtonProfile(){
     return  Row(
       children: [
         Expanded(
@@ -100,7 +80,7 @@ class ProfileHeader extends StatelessWidget{
                       borderRadius: BorderRadius.circular(12)
                   )
               ),
-              child: const Text("Chỉnh sửa"),
+              child: const Text(SourceString.editProfile),
             )
         ),
         const SizedBox(width: 3,),
@@ -112,9 +92,11 @@ class ProfileHeader extends StatelessWidget{
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)
                   )
-
               ),
-              child: const Text("Chia sẻ trang cá nhân"),
+              child: const Text(
+                SourceString.shareProfile,
+                overflow: TextOverflow.ellipsis,
+              ),
             )
         ),
         IconButton(
@@ -128,6 +110,18 @@ class ProfileHeader extends StatelessWidget{
             ),
         )
       ],
+    );
+  }
+  TextStyle _textStyleBold(){
+    return const TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.w700
+    );
+  }
+  TextStyle _textStyleNormal(){
+    return const TextStyle(
+        fontSize: 15,
+        fontWeight: FontWeight.w500
     );
   }
 }

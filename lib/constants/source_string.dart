@@ -27,5 +27,19 @@ class SourceString{
   static const String newsHot = "Tin nổi bật";
   static const String live = "Trực tiếp";
   static const String forYou = "Dành cho bạn";
-
+  static const String numPost = "123";
+  static const String followers = "Người theo dõi";
+  static const String numFollowers = "123";
+  static const String following = "Đang theo dõi";
+  static const String numFollowing = "123";
+  static const String user = "Dũng Hoàng";
+  static const String yearOfBirth = "2003";
+  static const String editProfile = "Chỉnh sửa";
+  static const String shareProfile = "Chia sẻ trang cá nhân";
+  static const myBike = "My Bike 🏍";
+  static const myCooking = "Cooking 🔪";
+  static const myNature = "Nature 🏞";
+  static const myPet = "Pet ❤️";
+  static const myPool = "Pool 🌊";
+  static const myYoga = "Yoga 💪🏻";
 }

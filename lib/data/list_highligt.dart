@@ -1,3 +1,6 @@
+import 'package:clone_instagram/constants/source_image.dart';
+import 'package:clone_instagram/constants/source_string.dart';
+
 class Highlight {
   String image;
   String title;
@@ -5,11 +8,11 @@ class Highlight {
   Highlight({required this.image, required this.title});
 
   static List<Highlight> highlightItems = [
-    Highlight(image: 'assets/images/bike.jpg', title: "My Bike 🏍"),
-    Highlight(image: 'assets/images/cooking.jpg', title: "Cooking 🔪"),
-    Highlight(image: 'assets/images/nature.jpg', title: "Nature 🏞"),
-    Highlight(image: 'assets/images/pet.jpg', title: "Pet ❤️"),
-    Highlight(image: 'assets/images/swimming.jpg', title: "Pool 🌊"),
-    Highlight(image: 'assets/images/yoga.jpg', title: "Yoga 💪🏻"),
+    Highlight(image: SourceImage.bike, title: SourceString.myBike),
+    Highlight(image: SourceImage.cooking, title: SourceString.myCooking),
+    Highlight(image: SourceImage.nature, title: SourceString.myNature),
+    Highlight(image: SourceImage.pet, title: SourceString.myPet),
+    Highlight(image: SourceImage.swimming, title: SourceString.myPool),
+    Highlight(image: SourceImage.yoga, title: SourceString.myYoga),
   ];
 }

@@ -12,6 +12,5 @@ class Post{
     "https://images.pexels.com/photos/19533986/pexels-photo-19533986/free-photo-of-bi-n-thanh-ph-nh-ng-ng-i-thuy-n.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     "https://images.pexels.com/photos/15852088/pexels-photo-15852088/free-photo-of-bi-n-thanh-ph-nh-ng-ng-i-thuy-n.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     "https://images.pexels.com/photos/208984/pexels-photo-208984.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-
   ];
 }

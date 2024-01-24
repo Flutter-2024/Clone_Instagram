@@ -1,4 +1,5 @@
-import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/constants/source_image.dart';
+import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/pages/profile/bottom_sheet/account_change_bts.dart';
 import 'package:clone_instagram/pages/profile/bottom_sheet/hamburger_bts.dart';
 import 'package:clone_instagram/pages/profile/bottom_sheet/post_create_bts.dart';
@@ -30,12 +31,12 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
                     );
                   },
               ),
-              Image.asset("assets/images/expand_account.png",
+              Image.asset(SourceImage.expandAccount,
                 color: Colors.black,
               ),
               const Spacer(),
               InkWell(
-                  child: Image.asset("assets/images/add_new_post.png"),
+                  child: Image.asset(SourceImage.addNewPost),
                   onTap: (){
                     showModalBottomSheet(
                       context: context,
@@ -51,7 +52,7 @@ class ProfileAppBar extends StatelessWidget implements PreferredSizeWidget {
               ),
               const SizedBox(width: 20,),
               InkWell(
-                  child: Image.asset("assets/images/hamburger.png"),
+                  child: Image.asset(SourceImage.hamburger),
                   onTap: (){
                     showModalBottomSheet(
                       context: context,
