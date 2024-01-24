@@ -26,7 +26,7 @@ class Account {
             shape: BoxShape.circle,
           ),
           padding: const EdgeInsets.all(7.5),
-          child: Image.asset(SourceString.add)),
+          child: Image.asset(SourceImage.add)),
       title: const Text(SourceString.addNewAccount),
     )
   ];
