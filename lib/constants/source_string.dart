@@ -36,10 +36,13 @@ class SourceString{
   static const String yearOfBirth = "2003";
   static const String editProfile = "Chỉnh sửa";
   static const String shareProfile = "Chia sẻ trang cá nhân";
-  static const myBike = "My Bike 🏍";
-  static const myCooking = "Cooking 🔪";
-  static const myNature = "Nature 🏞";
-  static const myPet = "Pet ❤️";
-  static const myPool = "Pool 🌊";
-  static const myYoga = "Yoga 💪🏻";
+  static const String myBike = "My Bike 🏍";
+  static const String myCooking = "Cooking 🔪";
+  static const String myNature = "Nature 🏞";
+  static const String myPet = "Pet ❤️";
+  static const String myPool = "Pool 🌊";
+  static const String myYoga = "Yoga 💪🏻";
+  static const String like = "Thích";
+  static const String share = "Chia sẻ";
+  static const String comment = "Bình luận";
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../../constants/source_string.dart';
 import '../../../data/list_post.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class PostTab extends StatelessWidget {
   PostTab({super.key});
 
@@ -36,7 +37,7 @@ class PostTab extends StatelessWidget {
             // after remove overlay, we go to detail page
           },
           child: Container(
-            color: Colors.black.withOpacity(0.7),
+            color: Colors.black.withOpacity(0.8),
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Center(
               child: ClipRRect(
@@ -47,15 +48,34 @@ class PostTab extends StatelessWidget {
                     padding: const EdgeInsets.all(0),
                     children: [
                       _createPhotoTitle(),
-                      Container(
-                        constraints: BoxConstraints(maxHeight: 420
-                        , maxWidth: MediaQuery.of(context).size.width,
+                      ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          bottomLeft: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
                         ),
-                        child: Image.network(
-                          url,
-                          fit: BoxFit.fitWidth,
+                        child: Container(
+                          constraints: BoxConstraints(
+                            maxHeight: 420,
+                            maxWidth: MediaQuery.of(context).size.width,
+                          ),
+                          // decoration: const BoxDecoration(
+                          //   borderRadius: BorderRadius.only(
+                          //     bottomLeft: Radius.circular(20),
+                          //     bottomRight: Radius.circular(20),
+                          //   ),
+                          //   color: Colors.white,
+                          // ),
+                          child: Image.network(
+                            url,
+                            fit: BoxFit.fitWidth,
+                          ),
                         ),
                       ),
+                      Container(
+                        height: 16,
+                        color: Colors.transparent
+                      ),
+                       _createMenu(),
                     ],
                   )
               ),
@@ -79,9 +99,61 @@ class PostTab extends StatelessWidget {
             backgroundImage: AssetImage('assets/images/cooking.jpg'),
           ),
           title: Text(
-            'john.doe',
+            SourceString.userName,
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
           ),
         )),
+  );
+
+  Material _createMenu() => Material(
+    color: Colors.transparent,
+    child: Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              child: ListView(
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(0),
+                children: [
+                  InkWell(
+                    child: const ListTile(
+                      trailing: Icon(Icons.favorite_border_outlined),
+                      title: Text(SourceString.like),
+                    ),
+                    onTap: () {},
+                  ),
+                  InkWell(
+                    child: const ListTile(
+                      trailing: FaIcon(FontAwesomeIcons.paperPlane),
+                      title: Text(SourceString.share),
+                    ),
+                    onTap: () {},
+                  ),
+                  InkWell(
+                    child: const ListTile(
+                      trailing: FaIcon(FontAwesomeIcons.comment),
+                      title: Text(SourceString.comment),
+                    ),
+                    onTap: () {},
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
   );
 }
