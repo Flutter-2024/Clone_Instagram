@@ -1,4 +1,5 @@
 import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/pages/newsfeed/news_feed_screen.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -11,6 +12,11 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
   final _selectedBody = [
+    const NewsFeedScreen(),
+    const NewsFeedScreen(),
+    const NewsFeedScreen(),
+    const NewsFeedScreen(),
+    const NewsFeedScreen(),
     // NewsFeedPage(),
     // SearchPage(),
     // AddNewPostPage(),
@@ -21,10 +27,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(SourceString.titleAppBar),
-        ),
-        body: _selectedBody[_selectedIndex] as Widget,
+        body: _selectedBody[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,

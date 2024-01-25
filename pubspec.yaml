@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  flutter_svg: ^0.22.0
   flutter:
     sdk: flutter
 
@@ -52,6 +53,16 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  assets:
+    - assets/logo_instagram.svg
+    - assets/icon_notification.svg
+    - assets/icon_chat.svg
+    - assets/icon_add_story.svg
+    - assets/alice.png
+    - assets/aya.jpg
+    - assets/hellen.png
+    - assets/liliana.jpg
+    - assets/yue.jpg
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
