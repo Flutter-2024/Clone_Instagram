@@ -1,4 +1,5 @@
 import 'package:clone_instagram/constants/source_string.dart';
+import 'package:clone_instagram/custom_widget/text_style_custom.dart';
 import 'package:clone_instagram/pages/profile/highlight_stories.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ class ProfileHeader extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final TextStyleCustom textStyleCustom = TextStyleCustom();
     return Container(
       decoration: const BoxDecoration(
         color: Colors.white,
@@ -28,32 +30,32 @@ class ProfileHeader extends StatelessWidget{
                 ),
                  Column(children: [
                   Text(SourceString.numPost,
-                    style: _textStyleBold(),),
+                    style: textStyleCustom.textStyleBold(),),
                   Text(SourceString.post,
-                    style: _textStyleNormal(),),
+                    style: textStyleCustom.textStyleNormal(),),
                 ],
                 ),
 
                  Column(children: [
                   Text(SourceString.numFollowers,
-                    style: _textStyleBold(),),
+                    style: textStyleCustom.textStyleBold(),),
                   Text(SourceString.followers,
-                    style: _textStyleNormal(),),
+                    style: textStyleCustom.textStyleNormal(),),
                 ],
                 ),
 
                 Column(children: [
                   Text(SourceString.numFollowing,
-                    style: _textStyleBold(),),
+                    style: textStyleCustom.textStyleBold(),),
                   Text(SourceString.following,
-                    style: _textStyleNormal(),),
+                    style: textStyleCustom.textStyleNormal(),),
                 ],
                 ),
               ]
             ),
             const SizedBox(height: 10),
             Text(SourceString.userName,
-              style: _textStyleBold(),),
+              style: textStyleCustom.textStyleBold(),),
             const Text(SourceString.yearOfBirth,
               style: TextStyle(
                   fontSize: 15,
@@ -110,18 +112,6 @@ class ProfileHeader extends StatelessWidget{
             ),
         )
       ],
-    );
-  }
-  TextStyle _textStyleBold(){
-    return const TextStyle(
-        fontSize: 15,
-        fontWeight: FontWeight.w700
-    );
-  }
-  TextStyle _textStyleNormal(){
-    return const TextStyle(
-        fontSize: 15,
-        fontWeight: FontWeight.w500
     );
   }
 }
