@@ -1,15 +1,11 @@
-import 'package:clone_instagram/constants/app_text_style.dart';
-import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/widgets/custom_avatar_fullname_username_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'custom_active_account_widget.dart';
-import 'custom_avatar_widget.dart';
 
-class CustomCallItemWidget extends StatelessWidget {
+class CustomNewChatItemWidget extends StatelessWidget {
   final String username;
   final String fullName;
   final String imageUrl;
-  const CustomCallItemWidget(
+  const CustomNewChatItemWidget(
       {Key? key,
         required this.username,
         required this.fullName,
@@ -23,24 +19,18 @@ class CustomCallItemWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Expanded(
-          flex: 10,
+          flex: 4,
           child: CustomAvatarFullNameUsernameItemWidget(
             fullName: fullName,
             username: username,
           ),
         ),
-        Expanded(
-          flex: 2,
-          child: InkWell(
-            onTap: () {},
-            child: const Icon(Icons.call_outlined),
-          ),
+        const Expanded(
+          child: SizedBox(
+            width: 0,
+            height: 0,
+          )
         ),
-        Expanded(
-            child: InkWell(
-          onTap: () {},
-          child: const Icon(Icons.video_camera_back_outlined),
-        ))
       ],
     );
   }

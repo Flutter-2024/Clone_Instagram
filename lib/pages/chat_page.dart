@@ -69,7 +69,9 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   Expanded(
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoute.newChat);
+                      },
                       icon: const Icon(Icons.note_alt_outlined),
                       alignment: Alignment.centerRight,
                       padding: const EdgeInsets.all(0.0),

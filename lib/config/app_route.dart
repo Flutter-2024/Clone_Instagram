@@ -2,6 +2,7 @@ import 'package:clone_instagram/pages/dashboard_page.dart';
 import 'package:flutter/material.dart';
 import '../pages/call_page.dart';
 import '../pages/chat_page.dart';
+import '../pages/new_chat_page.dart';
 
 class AppRoute {
   static const String home = "/";
@@ -12,6 +13,7 @@ class AppRoute {
   static const String profileDetail = "/profileDetail";
   static const String chat = "/chat";
   static const String call = "/call";
+  static const String newChat = "/newChat";
 
   static Route<dynamic> getAppPage(RouteSettings settings) {
     switch (settings.name) {
@@ -22,6 +24,10 @@ class AppRoute {
       case call:
         return MaterialPageRoute(
             builder: (BuildContext context) => const CallPage(),
+        );
+      case newChat:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const NewChatPage(),
         );
       default:
         return MaterialPageRoute(

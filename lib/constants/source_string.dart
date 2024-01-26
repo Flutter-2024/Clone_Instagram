@@ -16,5 +16,12 @@ class SourceString{
   static const String messageTime = "1h";
   static const String call = "Call";
   static const String friendCall = "Call to friends";
+  static const String newChat = "New Chat";
+  static const String endToEnd = "End-to-end encryption: ";
+  static const String enable = "Enable";
+  static const String disable = "Disable";
+  static const String to = "To:";
+  static const String createGroupChat = "Create Group Chat";
+  static const String suggestion = "Suggestion";
 
 }
