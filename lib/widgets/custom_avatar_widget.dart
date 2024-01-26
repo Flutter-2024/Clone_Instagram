@@ -16,7 +16,7 @@ class CustomAvatarWidget extends StatelessWidget {
     return Container(
       alignment: Alignment.centerLeft,
       margin:
-          const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 16.0, left: 8),
+          const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 16.0, left: 0),
       child: CircleAvatar(
         radius: radius,
         child: ClipOval(

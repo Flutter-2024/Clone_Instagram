@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:clone_instagram/constants/app_text_style.dart';
 import 'package:clone_instagram/constants/source_string.dart';
 import 'package:flutter/material.dart';
 import 'custom_active_account_widget.dart';
@@ -5,18 +8,15 @@ import 'custom_avatar_widget.dart';
 
 class CustomMessageItemWidget extends StatelessWidget {
   final bool isRead;
-  const CustomMessageItemWidget({Key? key, this.isRead = false})
+  final String username;
+  final String messageChat;
+  final String messageTime;
+  const CustomMessageItemWidget({Key? key, this.isRead = false, required this.username, required this.messageChat, required this.messageTime})
       : super(key: key);
 
   TextStyle get _textStyle => isRead
-      ? const TextStyle(
-          fontSize: 14.0,
-          fontWeight: FontWeight.normal,
-        )
-      : const TextStyle(
-          fontSize: 14.0,
-          fontWeight: FontWeight.bold,
-        );
+      ? AppTextStyle.normalSmallTitle
+      : AppTextStyle.boldSmallTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -35,21 +35,21 @@ class CustomMessageItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                SourceString.username,
+                username,
                 style: _textStyle,
               ),
               Row(
                 children: [
                   Expanded(
                     flex: 9,
-                    child: Text(SourceString.messageChat,
+                    child: Text(messageChat,
                         overflow: TextOverflow.ellipsis,
                         style: _textStyle,
                     ),
                   ),
                   Expanded(
                     child: Text(
-                      SourceString.messageTime,
+                      messageTime,
                       style: _textStyle,
                     ),
                   ),

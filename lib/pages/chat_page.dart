@@ -1,7 +1,7 @@
+import 'package:clone_instagram/config/app_route.dart';
+import 'package:clone_instagram/constants/app_text_style.dart';
 import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/tests/test.dart';
-import 'package:clone_instagram/widgets/custom_active_account_widget.dart';
-import 'package:clone_instagram/widgets/custom_avatar_widget.dart';
 import 'package:clone_instagram/widgets/custom_chat_search_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -47,22 +47,20 @@ class _ChatPageState extends State<ChatPage> {
                       style: TextButton.styleFrom(
                         alignment: Alignment.center,
                       ),
-                      child: const Row(children: [
+                      child: Row(children: [
                         Text(
                           SourceString.username,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0,
-                            color: Colors.black,
-                          ),
+                          style: AppTextStyle.boldLargeTitle,
                         ),
-                        Icon(Icons.keyboard_arrow_down_outlined),
+                        const Icon(Icons.keyboard_arrow_down_outlined),
                       ]),
                     ),
                   ),
                   Expanded(
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed(AppRoute.call);
+                      },
                       icon: const Icon(Icons.video_camera_front_outlined),
                       alignment: Alignment.centerRight,
                       padding: const EdgeInsets.all(0.0),
@@ -80,6 +78,9 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 8.0,
+              ),
               const CustomChatSearchWidget(),
               Flexible(
                 flex: 2,
@@ -89,15 +90,6 @@ class _ChatPageState extends State<ChatPage> {
                     scrollDirection: Axis.horizontal,
                     children: Test.storyTest,
                   ),
-                  // child: ListView.builder(
-                  //   itemBuilder: (BuildContext context, int index) {
-                  //     return index < 5
-                  //         ? const CustomActiveAccountWidget(isActive: true, username: "Thuy", noteContent: "haha",)
-                  //         : const CustomActiveAccountWidget(isActive: false, username: "Chanyeol",);
-                  //   },
-                  //   itemCount: 10,
-                  //   scrollDirection: Axis.horizontal,
-                  // ),
                 ),
               ),
               const Row(children: [
@@ -124,7 +116,7 @@ class _ChatPageState extends State<ChatPage> {
                     itemCount: 10,
                     itemBuilder: (BuildContext context, int index) {
                       return CustomMessageItemWidget(
-                          isRead: index >= 5 ? true : false);
+                          isRead: index >= 5 ? true : false, username: SourceString.username, messageChat: SourceString.messageChat, messageTime: SourceString.messageTime,);
                     },
                   )),
             ],
