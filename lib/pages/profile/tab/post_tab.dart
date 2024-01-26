@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../constants/source_image.dart';
 import '../../../constants/source_string.dart';
 import '../../../data/list_post.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -13,15 +14,19 @@ class PostTab extends StatelessWidget {
       body: GridView.count(
         crossAxisCount: 3,
         childAspectRatio: 1.0,
-        children: Post.imageUrls.map(_createGridTileWidget).toList(),
+        children: Post.imageUrls.map((url) {
+          final int idx = Post.imageUrls.indexOf(url) % 3;
+          return _createGridTileWidget(url, idx);
+        }).toList()
       ),
     );
   }
-  Widget _createGridTileWidget(String url) => Builder(builder: (context) {
+  Widget _createGridTileWidget(String url, int idx) => Builder(builder: (context) {
         return GestureDetector(
-          child: Image.network(url, fit: BoxFit.cover),
+          // child: Image.network(url, fit: BoxFit.cover),
+          child: Image.asset(SourceImage.bike, fit: BoxFit.cover),
           onLongPress: () {
-            _overlayEntry = _createOverlayEntry(url);
+            _overlayEntry = _createOverlayEntry(url, idx);
             Overlay.of(context).insert(_overlayEntry);
           },
           onLongPressEnd: (details) {
@@ -29,7 +34,7 @@ class PostTab extends StatelessWidget {
           },
         );
       });
-  OverlayEntry _createOverlayEntry(String url) =>
+  OverlayEntry _createOverlayEntry(String url, int idx) =>
       OverlayEntry(builder: (context) {
         return GestureDetector(
           onTap: () {
@@ -41,7 +46,6 @@ class PostTab extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Center(
               child: ClipRRect(
-                // padding: const EdgeInsets.symmetric(horizontal: 16),
                   borderRadius: BorderRadius.circular(20),
                   child: ListView(
                     shrinkWrap: true,
@@ -58,15 +62,8 @@ class PostTab extends StatelessWidget {
                             maxHeight: 420,
                             maxWidth: MediaQuery.of(context).size.width,
                           ),
-                          // decoration: const BoxDecoration(
-                          //   borderRadius: BorderRadius.only(
-                          //     bottomLeft: Radius.circular(20),
-                          //     bottomRight: Radius.circular(20),
-                          //   ),
-                          //   color: Colors.white,
-                          // ),
-                          child: Image.network(
-                            url,
+                          child: Image.asset(
+                            SourceImage.yoga,
                             fit: BoxFit.fitWidth,
                           ),
                         ),
@@ -75,7 +72,7 @@ class PostTab extends StatelessWidget {
                         height: 16,
                         color: Colors.transparent
                       ),
-                       _createMenu(),
+                       _createMenu(idx),
                     ],
                   )
               ),
@@ -105,9 +102,26 @@ class PostTab extends StatelessWidget {
         )),
   );
 
-  Material _createMenu() => Material(
+  Material _createMenu(int idx) => Material(
     color: Colors.transparent,
-    child: Row(
+    child: _getMenu(idx),
+  );
+  // ugly code
+  Row _getMenu(int idx) {
+    switch (idx) {
+      case 0:
+        return _createMenu0();
+      case 1:
+        return _createMenu1();
+      case 2:
+        return _createMenu2();
+      default:
+        return _createMenu0();
+    }
+  }
+  // ugly code
+  Row _createMenu2(){
+    return Row(
       children: [
         Expanded(
           flex: 2,
@@ -127,26 +141,44 @@ class PostTab extends StatelessWidget {
                 shrinkWrap: true,
                 padding: const EdgeInsets.all(0),
                 children: [
-                  InkWell(
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
                     child: const ListTile(
                       trailing: Icon(Icons.favorite_border_outlined),
                       title: Text(SourceString.like),
                     ),
-                    onTap: () {},
                   ),
-                  InkWell(
+                  TextButton(
+                    onPressed: () {  },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
                     child: const ListTile(
                       trailing: FaIcon(FontAwesomeIcons.paperPlane),
                       title: Text(SourceString.share),
                     ),
-                    onTap: () {},
                   ),
-                  InkWell(
+                  TextButton(
+                    onPressed: () {  },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
                     child: const ListTile(
                       trailing: FaIcon(FontAwesomeIcons.comment),
                       title: Text(SourceString.comment),
                     ),
-                    onTap: () {},
                   ),
                 ],
               ),
@@ -154,6 +186,151 @@ class PostTab extends StatelessWidget {
           ),
         ),
       ],
-    ),
-  );
+    );
+  }
+  // ugly code
+  Row _createMenu0(){
+    return Row(
+      children: [
+        Expanded(
+          flex: 5,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              child: ListView(
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(0),
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                    child: const ListTile(
+                      trailing: Icon(Icons.favorite_border_outlined),
+                      title: Text(SourceString.like),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {  },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                    child: const ListTile(
+                      trailing: FaIcon(FontAwesomeIcons.paperPlane),
+                      title: Text(SourceString.share),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {  },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                    child: const ListTile(
+                      trailing: FaIcon(FontAwesomeIcons.comment),
+                      title: Text(SourceString.comment),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 2,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
+      ],
+    );
+  }
+
+  // ugly code
+  Row _createMenu1(){
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
+        Expanded(
+          flex: 5,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+              ),
+              child: ListView(
+                shrinkWrap: true,
+                padding: const EdgeInsets.all(0),
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                    child: const ListTile(
+                      trailing: Icon(Icons.favorite_border_outlined),
+                      title: Text(SourceString.like),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {  },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                    child: const ListTile(
+                      trailing: FaIcon(FontAwesomeIcons.paperPlane),
+                      title: Text(SourceString.share),
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {  },
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.all(0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(0),
+                      ),
+                    ),
+                    child: const ListTile(
+                      trailing: FaIcon(FontAwesomeIcons.comment),
+                      title: Text(SourceString.comment),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Container(
+            color: Colors.green,
+          ),
+        ),
+      ],
+    );
+  }
 }
