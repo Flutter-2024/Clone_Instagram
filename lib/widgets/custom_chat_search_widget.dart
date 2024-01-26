@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/SourceString.dart';
+import '../constants/source_string.dart';
 
 class CustomChatSearchWidget extends StatefulWidget {
   const CustomChatSearchWidget({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class _CustomChatSearchWidgetState extends State<CustomChatSearchWidget> {
             ),
           ),
           backgroundColor: MaterialStateProperty.all<Color>(
-            Colors.grey[200]!,
+            Colors.grey.shade200,
           ),
           elevation: MaterialStateProperty.all<double>(0.0),
           constraints: BoxConstraints(
@@ -45,7 +45,6 @@ class _CustomChatSearchWidgetState extends State<CustomChatSearchWidget> {
               borderRadius: BorderRadius.circular(8.0),
             ),
           ),
-
         );
       },
       suggestionsBuilder: (BuildContext context, SearchController controller){

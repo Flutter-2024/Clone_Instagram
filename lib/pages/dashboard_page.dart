@@ -1,4 +1,4 @@
-import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/constants/source_string.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
