@@ -21,9 +21,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(SourceString.titleAppBar),
-        ),
         body: _selectedBody[_selectedIndex] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
