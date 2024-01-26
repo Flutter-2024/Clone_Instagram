@@ -1,3 +1,4 @@
+import 'package:clone_instagram/animation/scale_post_animation.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/source_image.dart';
 import '../../../constants/source_string.dart';
@@ -23,8 +24,8 @@ class PostTab extends StatelessWidget {
   }
   Widget _createGridTileWidget(String url, int idx) => Builder(builder: (context) {
         return GestureDetector(
-          // child: Image.network(url, fit: BoxFit.cover),
-          child: Image.asset(SourceImage.bike, fit: BoxFit.cover),
+          child: Image.network(url, fit: BoxFit.cover),
+          // child: Image.asset(SourceImage.bike, fit: BoxFit.cover),
           onLongPress: () {
             _overlayEntry = _createOverlayEntry(url, idx);
             Overlay.of(context).insert(_overlayEntry);
@@ -44,43 +45,44 @@ class PostTab extends StatelessWidget {
           child: Container(
             color: Colors.black.withOpacity(0.8),
             padding: const EdgeInsets.symmetric(horizontal: 16),
-            child: Center(
-              child: ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child: ListView(
-                    shrinkWrap: true,
-                    padding: const EdgeInsets.all(0),
-                    children: [
-                      _createPhotoTitle(),
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          bottomLeft: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        ),
-                        child: Container(
-                          constraints: BoxConstraints(
-                            maxHeight: 420,
-                            maxWidth: MediaQuery.of(context).size.width,
+            child: ScaleTransitionPost(
+              widget: Center(
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: ListView(
+                      shrinkWrap: true,
+                      padding: const EdgeInsets.all(0),
+                      children: [
+                        _createPhotoTitle(),
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(20),
+                            bottomRight: Radius.circular(20),
                           ),
-                          child: Image.asset(
-                            SourceImage.yoga,
-                            fit: BoxFit.fitWidth,
+                          child: Container(
+                            constraints: BoxConstraints(
+                              maxHeight: 420,
+                              maxWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: Image.network(
+                              url,
+                              fit: BoxFit.fitWidth,
+                            ),
                           ),
                         ),
-                      ),
-                      Container(
-                        height: 16,
-                        color: Colors.transparent
-                      ),
-                       _createMenu(idx),
-                    ],
-                  )
+                        Container(
+                          height: 16,
+                          color: Colors.transparent
+                        ),
+                         _createMenu(idx),
+                      ],
+                    )
+                ),
               ),
             ),
           ),
         );
       });
-
   Material _createPhotoTitle() => Material(
     child: Container(
         decoration: const BoxDecoration(
