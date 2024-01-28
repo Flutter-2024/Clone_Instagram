@@ -7,4 +7,11 @@ class SourceString{
   static const String add = "Add";
   static const String reels = "Reels";
   static const String profile = "Profile";
+  static const String you = "You";
+  static const String sponsored = "Sponsored";
+  static const String numberLike = "100 Likes";
+  static const String userName = "Username";
+  static const String more = "more";
+  static const String viewComment = "View all 100 comments";
+  static const String description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididuntasdasdasdasdsad";
 }
