@@ -1,4 +1,5 @@
 import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/pages/post/add_new_post_page.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -68,10 +69,10 @@ class _DashboardPageState extends State<DashboardPage> {
               // );
                 break;
               case 2:
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(builder: (context) => AddNewPostPage()),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddNewPostPage()),
+              );
                 break;
               case 3:
               // Navigator.push(
