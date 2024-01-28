@@ -34,19 +34,12 @@ class RecentSearchPage extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-
     return const ResultSearchPage();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> matchQuery = [];
     List<Person> matchQueryPerson = [];
-    for(var item in DataHistorySearch.list) {
-      if(item.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(item);
-      }
-    }
 
     for(var item in DataPerson.listPerson) {
       if(item.nameInstagram.toLowerCase().contains(query.toLowerCase())) {
@@ -106,14 +99,14 @@ class RecentSearchPage extends SearchDelegate {
       children: [
         Container(
           padding: const EdgeInsets.all(8.0),
-          margin: const EdgeInsets.symmetric(horizontal: 16.0),
+          margin: const EdgeInsets.symmetric(horizontal: 24.0),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(200)),
             border: Border.all(color: Colors.grey, width: 1),
           ),
           child: const Icon(
             Icons.search,
-            size: 30,
+            size: 40,
           ),
         ),
         Expanded(
@@ -138,7 +131,7 @@ class RecentSearchPage extends SearchDelegate {
   }
 
   Widget _itemPerson(Person person) {
-    return Row(
+    return person.type == false ? Row(
       children: [
         Container(
           padding: const EdgeInsets.all(16.0),
@@ -196,7 +189,7 @@ class RecentSearchPage extends SearchDelegate {
           ),
         )
       ],
-    );
+    ) : _itemText(person.nameInstagram);
   }
   
 }

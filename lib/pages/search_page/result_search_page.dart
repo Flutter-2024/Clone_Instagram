@@ -10,6 +10,8 @@ class ResultSearchPage extends StatefulWidget {
 class _ResultSearchState extends State<ResultSearchPage> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+
+    );
   }
 }
