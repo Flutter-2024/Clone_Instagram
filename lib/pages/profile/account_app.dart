@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../constants/source_image.dart';
+import '../../constants/source_string.dart';
 import '../../data/list_account.dart';
 
 class AccountApp extends StatelessWidget{
@@ -15,7 +17,7 @@ class AccountApp extends StatelessWidget{
         shrinkWrap: true,
         itemBuilder: (BuildContext context, int index){
           return GestureDetector(
-            child: Account.listAccount[index],
+            child: _getAccountItem(Account.listAccount[index]),
             onTap: (){
             },
           );
@@ -26,5 +28,13 @@ class AccountApp extends StatelessWidget{
       ),
     );
   }
+  Widget _getAccountItem( Account account){
+    return ListTile(
+        leading: Transform.scale(
+          scale: 1.5, child: Image.asset(account.avatar)),
+          title: Text(account.userName),
+    );
+  }
+
 
 }

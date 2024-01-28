@@ -18,7 +18,7 @@ class ProfileContent extends StatelessWidget{
           SliverList(
             delegate: SliverChildListDelegate(
               [
-                const ProfileHeader(),
+                 ProfileHeader(),
               ],
             ),
           )

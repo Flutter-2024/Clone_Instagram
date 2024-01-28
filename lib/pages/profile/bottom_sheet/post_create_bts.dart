@@ -1,7 +1,9 @@
-import 'package:clone_instagram/constants/source_image.dart';
+import 'package:clone_instagram/custom_widget/text_style_custom.dart';
+import 'package:clone_instagram/data/list_item_post.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/source_string.dart';
+import '../../../custom_widget/resize_handle_divider.dart';
 
 class PostCreateBts extends StatelessWidget {
   const PostCreateBts({super.key});
@@ -9,60 +11,49 @@ class PostCreateBts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
-    return ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 15),
-        children: [
-          Divider(
-            thickness: 3,
-            indent: (width / 2) - 50,
-            endIndent: (width / 2) - 50,
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            SourceString.create,
-            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
-            textAlign: TextAlign.center,
-          ),
-          const Divider(),
-          _getTypeCreate(
-              name: SourceString.footage, picture: SourceImage.film),
-          const Divider(
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: ListView.separated(
+        shrinkWrap: true,
+        padding: const EdgeInsets.only(left: 16, right: 16, bottom: 16),
+        itemCount: ItemPost.listItemPost.length,
+        itemBuilder: (BuildContext context, int index) {
+         if(index == 0){
+           return Column(
+             children: [
+               const ResizeHandleDivider(),
+               const SizedBox(
+                 height: 10,
+               ),
+               Text(
+                 SourceString.create,
+                 style: TextStyleCustom.instance.textStyleBold(),
+                 textAlign: TextAlign.center,
+               ),
+               const Divider(),
+               _getTypeCreate(ItemPost.listItemPost[index])
+             ],
+           );
+         }
+         else {
+           return _getTypeCreate(ItemPost.listItemPost[index]);
+         }
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return const Divider(
             indent: 48,
-          ),
-          _getTypeCreate(
-              name: SourceString.post, picture: SourceImage.post),
-          const Divider(
-            indent: 48,
-          ),
-          _getTypeCreate(
-              name: SourceString.news, picture: SourceImage.add),
-          const Divider(
-            indent: 48,
-          ),
-          _getTypeCreate(
-              name: SourceString.newsHot, picture: SourceImage.heart),
-          const Divider(
-            indent: 48,
-          ),
-          _getTypeCreate(
-              name: SourceString.live, picture: SourceImage.heart),
-          const Divider(
-            indent: 48,
-          ),
-          _getTypeCreate(
-              name: SourceString.forYou, picture: SourceImage.heart),
-        ]);
+          );
+        },
+      ),
+    );
   }
-
-  ListTile _getTypeCreate({required String name, required String picture}) {
+  ListTile _getTypeCreate(ItemPost itemPost) {
     return ListTile(
       dense: true,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0.0),
       visualDensity: const VisualDensity(horizontal: 0, vertical: -4),
-      title: Text(name),
-      leading: Image.asset(picture),
+      title: Text(itemPost.name),
+      leading: Image.asset(itemPost.image),
     );
   }
 }

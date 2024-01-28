@@ -45,4 +45,7 @@ class SourceString{
   static const String like = "Thích";
   static const String share = "Chia sẻ";
   static const String comment = "Bình luận";
+  static const String exploreEverybody = "Khám phá mọi người";
+  static const String seeAll = "Xem tất cả";
+  static const String follow = "Theo dõi";
 }
