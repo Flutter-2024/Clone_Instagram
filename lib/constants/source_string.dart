@@ -9,5 +9,4 @@ class SourceString{
   static const String profile = "Profile";
   static const String recent = "Recent";
   static const String seeAll = "See all";
-  static const String urlTest = "assets/test.jpg";
 }

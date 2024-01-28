@@ -1,9 +1,11 @@
-import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/constants/media_utils.dart';
+import 'package:clone_instagram/constants/source_string.dart';
+import 'package:clone_instagram/data/data.dart';
+import 'package:clone_instagram/model/person.dart';
+import 'package:clone_instagram/pages/search_page/result_search_page.dart';
 import 'package:flutter/material.dart';
 
-class HistorySearchPage extends SearchDelegate {
-  List<String> list = ["nhay", "hat", "lien minh huyen thoai", "pam", "combo yasua", "di date mac gi", "meo dang yeu", "mua ba-le",
-    "nhay", "hat", "lien minh huyen thoai", "pam", "combo yasua", "di date mac gi", "meo dang yeu", "mua ba-le"];
+class RecentSearchPage extends SearchDelegate {
 
   @override
   List<Widget>? buildActions(BuildContext context) {
@@ -32,30 +34,23 @@ class HistorySearchPage extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    List<String> matchQuery = [];
-    for(var item in list) {
-      if(item.toLowerCase().contains(query.toLowerCase())) {
-        matchQuery.add(item);
-      }
-    }
 
-    return ListView.builder(
-        itemCount: matchQuery.length,
-        itemBuilder: (context, index) {
-          var result = matchQuery[index];
-          return ListTile(
-            title: Text(result),
-          );
-        }
-    );
+    return const ResultSearchPage();
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     List<String> matchQuery = [];
-    for(var item in list) {
+    List<Person> matchQueryPerson = [];
+    for(var item in DataHistorySearch.list) {
       if(item.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(item);
+      }
+    }
+
+    for(var item in DataPerson.listPerson) {
+      if(item.nameInstagram.toLowerCase().contains(query.toLowerCase())) {
+        matchQueryPerson.add(item);
       }
     }
 
@@ -87,10 +82,11 @@ class HistorySearchPage extends SearchDelegate {
         const SizedBox(height: 24.0),
         Expanded(
           child: ListView.separated(
-            itemCount: matchQuery.length,
+            itemCount: matchQueryPerson.length,
             itemBuilder: (context, index) {
-              var result = matchQuery[index];
-              return _item(result);
+              var result = matchQueryPerson[index];
+              //return _itemText(result);
+              return _itemPerson(result);
             },
             separatorBuilder: (context, index) {
               return const Divider(
@@ -105,7 +101,7 @@ class HistorySearchPage extends SearchDelegate {
     );
   }
 
-  Widget _item(String title) {
+  Widget _itemText(String title) {
     return Row(
       children: [
         Container(
@@ -117,7 +113,7 @@ class HistorySearchPage extends SearchDelegate {
           ),
           child: const Icon(
             Icons.search,
-            size: 40,
+            size: 30,
           ),
         ),
         Expanded(
@@ -127,6 +123,68 @@ class HistorySearchPage extends SearchDelegate {
                 fontSize: 18,
                 fontWeight: FontWeight.w500
             ),
+          )
+        ),
+        Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: const Icon(
+            Icons.clear,
+            color: Colors.grey,
+            size: 18.0,
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _itemPerson(Person person) {
+    return Row(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(16.0),
+          child: CircleAvatar(
+            radius: 35,
+            backgroundImage: AssetImage(
+                person.avatar,
+            ),
+            child: person.story == true ? Container(
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.red, width: 2),
+              ),
+            ) : null,
+          )
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                person.nameInstagram,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500
+                )
+              ),
+              Text(
+                person.nameFacebook,
+                style: const TextStyle(
+                  color: Colors.grey,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500
+                )
+              ),
+              if(person.follow != 0)...[
+                Text(
+                    "${person.follow} followers",
+                    style: const TextStyle(
+                        color: Colors.grey,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400
+                    )
+                ),
+              ]
+            ],
           )
         ),
         Container(

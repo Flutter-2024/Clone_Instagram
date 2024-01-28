@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class ResultSearch extends StatefulWidget {
-  const ResultSearch({super.key});
+class ResultSearchPage extends StatefulWidget {
+  const ResultSearchPage({super.key});
 
   @override
-  State<ResultSearch> createState() => _ResultSearchState();
+  State<ResultSearchPage> createState() => _ResultSearchState();
 }
 
-class _ResultSearchState extends State<ResultSearch> {
+class _ResultSearchState extends State<ResultSearchPage> {
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
