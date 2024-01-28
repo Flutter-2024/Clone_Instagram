@@ -74,6 +74,10 @@ flutter:
    - assets/image/meix.jpg
    - assets/image/pam.jpg
    - assets/image/avt_null.jpg
+   - assets/image/audio_01.jpg
+   - assets/image/audio_02.jpg
+   - assets/image/audio_03.jpg
+   - assets/image/audio_04.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

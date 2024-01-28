@@ -34,7 +34,7 @@ class RecentSearchPage extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return const ResultSearchPage();
+    return ResultSearchPage(result: query.toLowerCase());
   }
 
   @override
@@ -78,7 +78,6 @@ class RecentSearchPage extends SearchDelegate {
             itemCount: matchQueryPerson.length,
             itemBuilder: (context, index) {
               var result = matchQueryPerson[index];
-              //return _itemText(result);
               return _itemPerson(result);
             },
             separatorBuilder: (context, index) {
@@ -134,19 +133,26 @@ class RecentSearchPage extends SearchDelegate {
     return person.type == false ? Row(
       children: [
         Container(
-          padding: const EdgeInsets.all(16.0),
-          child: CircleAvatar(
-            radius: 35,
-            backgroundImage: AssetImage(
-                person.avatar,
-            ),
-            child: person.story == true ? Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.red, width: 2),
-              ),
-            ) : null,
-          )
+          margin: const EdgeInsets.symmetric(vertical: 8.0),
+          decoration: person.story == true ? BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: Colors.red, width: 2),
+          ) : null,
+          child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: CircleAvatar(
+                radius: 35,
+                backgroundImage: AssetImage(
+                  person.avatar,
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.white, width: 2),
+                  ),
+                ),
+              )
+          ),
         ),
         Expanded(
           child: Column(
