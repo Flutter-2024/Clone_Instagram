@@ -47,6 +47,7 @@ class RecentSearchPage extends SearchDelegate {
       }
     }
 
+
     return Column(
       children: [
         const SizedBox(height: 24.0),

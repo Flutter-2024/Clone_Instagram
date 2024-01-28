@@ -1,7 +1,8 @@
 class MediaUtils {
   static const String urlTest = "assets/test.jpg";
   static const String iconMedia = "assets/media.png";
-  static const String urlButterfly = "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4";
+  static const String urlButterfly = "https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4?raw=true";
+  static const String imgButterfly = "assets/image/img_butterfly.png";
   static const String avtDung = "assets/image/_mdunggg_.jpg";
   static const String avtDat = "assets/image/demigod243.jpg";
   static const String avtDMinh = "assets/image/dminh.jpg";

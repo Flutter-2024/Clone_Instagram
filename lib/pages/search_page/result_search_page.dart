@@ -18,7 +18,7 @@ class _ResultSearchState extends State<ResultSearchPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        initialIndex: 0,
+        initialIndex: 1,
         length: 6,
       child: Scaffold(
         appBar: _appBar(context),
@@ -30,9 +30,10 @@ class _ResultSearchState extends State<ResultSearchPage> {
   PreferredSizeWidget _appBar(BuildContext context) {
     return AppBar(
       leading: null,
+      automaticallyImplyLeading: false,
+      toolbarHeight: 0,
       bottom:  const TabBar(
           unselectedLabelColor: Colors.grey,
-          //labelPadding: EdgeInsets.symmetric(horizontal: 30),
           indicator: UnderlineTabIndicator(
             borderSide: BorderSide(color: Colors.black, width: 2),
             insets: EdgeInsets.symmetric(horizontal: 48),
