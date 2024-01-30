@@ -1,5 +1,6 @@
 import 'package:clone_instagram/model/audio_result.dart';
 import 'package:clone_instagram/model/person.dart';
+import 'package:clone_instagram/model/reels.dart';
 import 'package:clone_instagram/model/tags.dart';
 
 class DataPerson {
@@ -57,5 +58,49 @@ class DataAudio {
     AudioResult(avatar: 'assets/image/audio_02.jpg', name: "Loi choi 2", author: "Wren Evans", reels: "134"),
     AudioResult(avatar: 'assets/image/audio_03.jpg', name: "Tri kỉ", author: "Phan Mạnh Quỳnh", reels: "5K+"),
     AudioResult(avatar: 'assets/image/audio_04.jpg', name: "Anh đã ổn hơn", author: "MCK", reels: "2K+"),
+  ];
+}
+
+class DataReels {
+  static List<Reels> listReels = [
+    Reels(avatar: "assets/test.jpg", views: "28.1K"),
+    Reels(avatar: "assets/image/audio_01.jpg", views: "3M"),
+    Reels(avatar: "assets/image/audio_02.jpg", views: "1.4M"),
+
+    Reels(avatar: "assets/image/audio_03.jpg", views: "1.5M"),
+    Reels(avatar: "assets/image/audio_04.jpg", views: "601K"),
+    Reels(avatar: "assets/test.jpg", views: "3.1M"),
+
+    Reels(avatar: "assets/test.jpg", views: "28.1K"),
+    Reels(avatar: "assets/image/audio_01.jpg", views: "3M"),
+    Reels(avatar: "assets/image/audio_02.jpg", views: "1.4M"),
+
+    Reels(avatar: "assets/image/audio_03.jpg", views: "1.5M"),
+    Reels(avatar: "assets/image/audio_04.jpg", views: "601K"),
+    Reels(avatar: "assets/test.jpg", views: "3.1M"),
+
+    Reels(avatar: "assets/test.jpg", views: "28.1K"),
+    Reels(avatar: "assets/image/audio_01.jpg", views: "3M"),
+    Reels(avatar: "assets/image/audio_02.jpg", views: "1.4M"),
+
+    Reels(avatar: "assets/image/audio_03.jpg", views: "1.5M"),
+    Reels(avatar: "assets/image/audio_04.jpg", views: "601K"),
+    Reels(avatar: "assets/test.jpg", views: "3.1M"),
+
+    Reels(avatar: "assets/test.jpg", views: "28.1K"),
+    Reels(avatar: "assets/image/audio_01.jpg", views: "3M"),
+    Reels(avatar: "assets/image/audio_02.jpg", views: "1.4M"),
+
+    Reels(avatar: "assets/image/audio_03.jpg", views: "1.5M"),
+    Reels(avatar: "assets/image/audio_04.jpg", views: "601K"),
+    Reels(avatar: "assets/test.jpg", views: "3.1M"),
+
+    Reels(avatar: "assets/test.jpg", views: "28.1K"),
+    Reels(avatar: "assets/image/audio_01.jpg", views: "3M"),
+    Reels(avatar: "assets/image/audio_02.jpg", views: "1.4M"),
+
+    Reels(avatar: "assets/image/audio_03.jpg", views: "1.5M"),
+    Reels(avatar: "assets/image/audio_04.jpg", views: "601K"),
+    Reels(avatar: "assets/test.jpg", views: "3.1M"),
   ];
 }

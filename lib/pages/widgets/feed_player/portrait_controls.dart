@@ -21,20 +21,20 @@ class FeedPlayerPortraitControls extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
-          FlickAutoHideChild(
-            showIfVideoNotInitialized: false,
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Colors.black38,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: FlickLeftDuration(),
-              ),
-            ),
-          ),
+          // FlickAutoHideChild(
+          //   showIfVideoNotInitialized: false,
+          //   child: Align(
+          //     alignment: Alignment.topRight,
+          //     child: Container(
+          //       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+          //       decoration: BoxDecoration(
+          //         color: Colors.black38,
+          //         borderRadius: BorderRadius.circular(20),
+          //       ),
+          //       child: FlickLeftDuration(),
+          //     ),
+          //   ),
+          // ),
           Expanded(
             child: FlickToggleSoundAction(
               toggleMute: () {
@@ -58,10 +58,10 @@ class FeedPlayerPortraitControls extends StatelessWidget {
                     color: Colors.black38,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: FlickSoundToggle(
-                    toggleMute: () => flickMultiManager?.toggleMute(),
-                    color: Colors.white,
-                  ),
+                  // child: FlickSoundToggle(
+                  //   toggleMute: () => flickMultiManager?.toggleMute(),
+                  //   color: Colors.white,
+                  // ),
                 ),
                 // FlickFullScreenToggle(),
               ],
