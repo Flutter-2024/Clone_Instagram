@@ -11,6 +11,13 @@ class DashboardPage extends StatefulWidget {
 
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
+  final _selectedBody = [
+    // NewsFeedPage(),
+    // SearchPage(),
+    // AddNewPostPage(),
+    // ReelsPage(),
+    // ProfileDetailPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +25,7 @@ class _DashboardPageState extends State<DashboardPage> {
         appBar: AppBar(
           title: const Text(SourceString.titleAppBar),
         ),
-        body: const Center(
-          child: Text(""),
-        ),
+        body: _selectedBody[_selectedIndex] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
@@ -95,3 +100,4 @@ class _DashboardPageState extends State<DashboardPage> {
     );
   }
 }
+
