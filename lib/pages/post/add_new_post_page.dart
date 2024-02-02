@@ -1,7 +1,7 @@
 
-
 import 'package:clone_instagram/constants/SourceString.dart';
-import 'package:clone_instagram/pages/post/camera_page.dart';
+import 'package:clone_instagram/pages/post/show_picture_camera_page.dart';
+import 'package:clone_instagram/pages/post/take_photo_page.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:clone_instagram/pages/post/media_services.dart';
 import 'package:flutter/material.dart';
@@ -61,7 +61,20 @@ class _AddNewPostPageState extends State<AddNewPostPage> {
             ),
             actions: [
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) {
+                          return selectedAssetList.isEmpty ?
+                          ShowPictureCameraPage(
+                            image: selectedEntity!,
+                          )
+                              :
+                          ShowPictureCameraPage(
+                            listImages: selectedAssetList,
+                          );
+                        }
+                    ),);
+                  },
                   child: const Text(
                     SourceString.postNext,
                     style: TextStyle(color: Colors.blue),
@@ -154,9 +167,15 @@ class _AddNewPostPageState extends State<AddNewPostPage> {
                           IconButton(
                             onPressed: () {
                               Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => CameraPage(assetEntity: selectedEntity!,)));
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        TakePhoto(assetEntity: selectedEntity!)
+                                    //     CameraPage(
+                                    //   assetEntity: selectedEntity!,
+                                    // ),
+                                    ),
+                              );
                             },
                             icon: const Icon(
                               Icons.camera,

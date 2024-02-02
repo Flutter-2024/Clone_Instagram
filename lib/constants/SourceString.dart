@@ -11,4 +11,6 @@ class SourceString{
   static const String postNext = "Next";
   static const String postOptionRecently = "Recently";
   static const String postOptionGallery = "Gallery";
+  static const String post = "Share";
+  static const String postNewTitle = "NewPost";
 }
