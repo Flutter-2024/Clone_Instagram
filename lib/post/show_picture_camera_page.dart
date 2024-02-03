@@ -1,10 +1,10 @@
-import 'package:clone_instagram/pages/post/post_item.dart';
+import 'package:clone_instagram/post/models/post_item.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_manager/photo_manager.dart';
 import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
 
-import '../../constants/SourceString.dart';
-import 'image_item.dart';
+import '../constants/SourceString.dart';
+import 'models/image_item.dart';
 
 class ShowPictureCameraPage extends StatefulWidget {
   final AssetEntity? image;

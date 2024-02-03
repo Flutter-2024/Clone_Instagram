@@ -1,9 +1,9 @@
 
 import 'package:clone_instagram/constants/SourceString.dart';
-import 'package:clone_instagram/pages/post/show_picture_camera_page.dart';
-import 'package:clone_instagram/pages/post/take_photo_page.dart';
+import 'package:clone_instagram/post/show_picture_camera_page.dart';
+import 'package:clone_instagram/post/take_photo_page.dart';
 import 'package:photo_manager/photo_manager.dart';
-import 'package:clone_instagram/pages/post/media_services.dart';
+import 'package:clone_instagram/post/services/media_services.dart';
 import 'package:flutter/material.dart';
 import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
 

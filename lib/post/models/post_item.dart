@@ -1,6 +1,6 @@
 
 
-import 'package:clone_instagram/pages/post/image_item.dart';
+import 'package:clone_instagram/post/models/image_item.dart';
 
 class PostItem {
   final ImageItem imageItem;

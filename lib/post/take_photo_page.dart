@@ -1,10 +1,10 @@
 import 'package:camera/camera.dart';
-import 'package:clone_instagram/pages/post/show_picture_camera_page.dart';
+import 'package:clone_instagram/post/show_picture_camera_page.dart';
 import 'package:flutter/material.dart';
 import 'package:image/image.dart' as img;
 import 'package:photo_manager/photo_manager.dart';
 import 'package:photo_manager_image_provider/photo_manager_image_provider.dart';
-import '../../main.dart';
+import '../main.dart';
 
 class TakePhoto extends StatefulWidget {
   final AssetEntity assetEntity;
