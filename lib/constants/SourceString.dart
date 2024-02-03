@@ -7,4 +7,10 @@ class SourceString{
   static const String add = "Add";
   static const String reels = "Reels";
   static const String profile = "Profile";
+  static const String postTitle = "New Post";
+  static const String postNext = "Next";
+  static const String postOptionRecently = "Recently";
+  static const String postOptionGallery = "Gallery";
+  static const String post = "Share";
+  static const String postNewTitle = "NewPost";
 }

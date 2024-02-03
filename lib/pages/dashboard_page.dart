@@ -1,4 +1,5 @@
 import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/post/add_new_post_page.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -11,11 +12,11 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
   final _selectedBody = [
-    // NewsFeedPage(),
-    // SearchPage(),
-    // AddNewPostPage(),
-    // ReelsPage(),
-    // ProfileDetailPage(),
+    AddNewPostPage(),
+    AddNewPostPage(),
+    AddNewPostPage(),
+    AddNewPostPage(),
+    AddNewPostPage(),
   ];
 
   @override
@@ -59,6 +60,38 @@ class _DashboardPageState extends State<DashboardPage> {
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           onTap: (int index){
+            switch(index){
+              case 0:
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => NewsFeedPage()),
+              // );
+                break;
+              case 1:
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => SearchPage()),
+              // );
+                break;
+              case 2:
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddNewPostPage()),
+              );
+                break;
+              case 3:
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => ReelsPage()),
+              // );
+                break;
+              case 4:
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => ProfileDetailPage()),
+              // );
+                break;
+            }
             setState(() {
               _selectedIndex = index;
             });
