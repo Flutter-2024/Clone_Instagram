@@ -51,8 +51,8 @@ class CustomActiveAccountWidget extends StatelessWidget {
         ),
         isActive
             ? const Positioned(
-                bottom: 32,
-                left: 76,
+                bottom: 40,
+                left: 68,
                 child: CustomActivePointWidget(),
               )
             : const SizedBox(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../pages/call_page.dart';
 import '../pages/chat_page.dart';
 import '../pages/new_chat_page.dart';
+import '../pages/search_chat_page.dart';
 
 class AppRoute {
   static const String home = "/";
@@ -14,24 +15,29 @@ class AppRoute {
   static const String chat = "/chat";
   static const String call = "/call";
   static const String newChat = "/newChat";
+  static const String searchChat = "/searchChat";
 
   static Route<dynamic> getAppPage(RouteSettings settings) {
     switch (settings.name) {
       case chat:
         return MaterialPageRoute(
-            builder: (BuildContext context) => const ChatPage(),
+          builder: (BuildContext context) => const ChatPage(),
         );
       case call:
         return MaterialPageRoute(
-            builder: (BuildContext context) => const CallPage(),
+          builder: (BuildContext context) => const CallPage(),
         );
       case newChat:
         return MaterialPageRoute(
           builder: (BuildContext context) => const NewChatPage(),
         );
+      case searchChat:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const SearchChatPage(),
+        );
       default:
         return MaterialPageRoute(
-            builder: (BuildContext context) => const DashboardPage(),
+          builder: (BuildContext context) => const DashboardPage(),
         );
     }
   }

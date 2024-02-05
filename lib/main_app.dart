@@ -2,6 +2,7 @@ import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/pages/call_page.dart';
 import 'package:clone_instagram/pages/chat_page.dart';
 import 'package:clone_instagram/pages/dashboard_page.dart';
+import 'package:clone_instagram/pages/demo_page.dart';
 import 'package:flutter/material.dart';
 
 import 'config/app_route.dart';
