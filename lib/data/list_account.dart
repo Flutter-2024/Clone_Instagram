@@ -1,5 +1,4 @@
 import 'package:clone_instagram/constants/source_image.dart';
-import 'package:flutter/material.dart';
 import '../constants/source_string.dart';
 
 class Account {

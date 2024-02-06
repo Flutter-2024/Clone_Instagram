@@ -1,13 +1,15 @@
+import 'package:clone_instagram/custom_widget/avatar_with_highlight.dart';
 import 'package:flutter/material.dart';
+
 import '../../data/list_highligt.dart';
 
-class HighlightStories extends StatelessWidget{
+class HighlightStories extends StatelessWidget {
   const HighlightStories({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 85,
+      height: 90,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
@@ -17,23 +19,19 @@ class HighlightStories extends StatelessWidget{
             children: [
               Column(
                 children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Colors.blue,
-                    child: Padding(
-                      padding: const EdgeInsets.all(2.0),
-                      child: CircleAvatar(
-                        backgroundImage:
-                        AssetImage(Highlight.highlightItems[index].image),
-                        radius: 28,
-                      ),
-                    ),
-                  ),
+                  AvatarWithHighlight(
+                      imageUrl: Highlight.highlightItems[index].image,
+                      isNetworkImage: false,
+                      sizeContainer: 65,
+                      radius: 40,
+                      isShowHighlight: true,
+                      haveAddIcon: false),
                   Padding(
                     padding: const EdgeInsets.only(top: 4),
                     child: Text(
                       Highlight.highlightItems[index].title,
                       style: const TextStyle(fontSize: 13),
+                      overflow: TextOverflow.ellipsis,
                     ),
                   )
                 ],
@@ -47,5 +45,4 @@ class HighlightStories extends StatelessWidget{
       ),
     );
   }
-
 }

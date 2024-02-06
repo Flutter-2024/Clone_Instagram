@@ -3,7 +3,6 @@ import 'package:clone_instagram/pages/profile/account_app.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/source_image.dart';
-import '../../../data/list_account.dart';
 
 class AccountChangeBts extends StatelessWidget {
   const AccountChangeBts({super.key});

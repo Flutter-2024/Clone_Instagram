@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../constants/source_image.dart';
-import '../../constants/source_string.dart';
 import '../../data/list_account.dart';
 
 class AccountApp extends StatelessWidget{

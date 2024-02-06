@@ -1,6 +1,5 @@
 import 'package:clone_instagram/animation/scale_post_animation.dart';
 import 'package:flutter/material.dart';
-import '../../../constants/source_image.dart';
 import '../../../constants/source_string.dart';
 import '../../../data/list_post.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
