@@ -6,6 +6,8 @@ import 'package:clone_instagram/pages/profile/highlight_stories.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../data/list_post.dart';
+
 class ProfileHeader extends StatefulWidget {
   ProfileHeader({super.key});
 
@@ -45,95 +47,60 @@ class ProfileHeaderState extends State<ProfileHeader> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  // Container(
-                  //     height: 90,
-                  //     width: 90,
-                  //     padding: const EdgeInsets.all(2),
-                  //     decoration: const BoxDecoration(
-                  //         shape: BoxShape.circle,
-                  //         gradient: LinearGradient(colors: [
-                  //           Color(0xFFC913B9),
-                  //           Color(0xFFF9373F),
-                  //           Color(0xFFFECD00),
-                  //         ])),
-                  //     child: Stack(
-                  //       alignment: Alignment.center,
-                  //       children: [
-                  //         const CircleAvatar(
-                  //           radius: 42,
-                  //           backgroundColor: Colors.white,
-                  //         ),
-                  //         const CircleAvatar(
-                  //           radius: 40,
-                  //           backgroundImage: NetworkImage(
-                  //               "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-                  //         ),
-                  //         Container(
-                  //           alignment: Alignment.bottomRight,
-                  //           child: Container(
-                  //             padding: const EdgeInsets.all(2),
-                  //             decoration: const BoxDecoration(
-                  //               shape: BoxShape.circle,
-                  //               color: Colors.white,
-                  //             ),
-                  //             child: Container(
-                  //               decoration: const BoxDecoration(
-                  //                 shape: BoxShape.circle,
-                  //                 color: Colors.blue,
-                  //               ),
-                  //               child: const Icon(
-                  //                 Icons.add,
-                  //                 color: Colors.white,
-                  //                 size: 20,
-                  //               ),
-                  //             ),
-                  //           ),
-                  //         )
-                  //       ],
-                  //     )
-                  // ),
-                  const AvatarWithHighlight(
-                      sizeContainer: 90,
-                      isNetworkImage: true,
-                      imageUrl: "https://images.pexels.com/photos/1741205/pexels-photo-1741205.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-                      radius: 42,
-                      isShowHighlight: true,
-                      haveAddIcon: true),
-                  Column(
-                    children: [
-                      Text(
-                        SourceString.numPost,
-                        style: textStyleCustom.textStyleBold(),
-                      ),
-                      Text(
-                        SourceString.post,
-                        style: textStyleCustom.textStyleNormal(),
-                      ),
-                    ],
+                   Expanded(
+                    child: AvatarWithHighlight(
+                        sizeContainer: 90,
+                        isNetworkImage: true,
+                        imageUrl: Post.imageUrls[0],
+                        radius: 42,
+                        isShowHighlight: true,
+                        haveAddIcon: true),
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        SourceString.numFollowers,
-                        style: textStyleCustom.textStyleBold(),
-                      ),
-                      Text(
-                        SourceString.followers,
-                        style: textStyleCustom.textStyleNormal(),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          SourceString.numPost,
+                          style: textStyleCustom.textStyleBold(),
+                        ),
+                        Text(
+                          SourceString.post,
+                          style: textStyleCustom.textStyleNormal(),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                      ],
+                    ),
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        SourceString.numFollowing,
-                        style: textStyleCustom.textStyleBold(),
-                      ),
-                      Text(
-                        SourceString.following,
-                        style: textStyleCustom.textStyleNormal(),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          SourceString.numFollowers,
+                          style: textStyleCustom.textStyleBold(),
+                        ),
+                        Text(
+                          SourceString.followers,
+                          style: textStyleCustom.textStyleNormal(),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      children: [
+                        Text(
+                          SourceString.numFollowing,
+                          style: textStyleCustom.textStyleBold(),
+                        ),
+                        Text(
+                          SourceString.following,
+                          style: textStyleCustom.textStyleNormal(),
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
                   ),
                 ]),
             const SizedBox(height: 10),
