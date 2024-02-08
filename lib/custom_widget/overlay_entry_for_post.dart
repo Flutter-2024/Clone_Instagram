@@ -102,7 +102,6 @@ class OverlayEntryForPost extends StatelessWidget {
     color: Colors.transparent,
     child: _getMenu(idx),
   );
-  // ugly code
   Widget _getMenu(int position) {
     switch(position) {
       case 0:

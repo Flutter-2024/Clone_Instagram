@@ -1,11 +1,12 @@
 import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/custom_widget/avatar_with_highlight.dart';
 import 'package:clone_instagram/custom_widget/text_style_custom.dart';
+import 'package:clone_instagram/pages/profile/bloc/friend_bloc.dart';
 import 'package:clone_instagram/pages/profile/friend_list.dart';
 import 'package:clone_instagram/pages/profile/highlight_stories.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/list_post.dart';
 
 class ProfileHeader extends StatefulWidget {
@@ -18,14 +19,10 @@ class ProfileHeader extends StatefulWidget {
     return ProfileHeaderState();
   }
 }
-
 class ProfileHeaderState extends State<ProfileHeader> {
-  bool _isShowSharedFriend = false;
-
   @override
   void initState() {
     super.initState();
-    _isShowSharedFriend = widget.isShowSharedFriend;
   }
 
   @override
@@ -121,10 +118,7 @@ class ProfileHeaderState extends State<ProfileHeader> {
             const SizedBox(
               height: 10,
             ),
-            Visibility(
-              visible: _isShowSharedFriend,
-              child: const FriendList(),
-            ),
+            const FriendList(),
             const HighlightStories()
           ],
         ),
@@ -162,10 +156,16 @@ class ProfileHeaderState extends State<ProfileHeader> {
           ),
         )),
         IconButton(
-          onPressed: () {
-            setState(() {
-              _isShowSharedFriend = !_isShowSharedFriend;
-            });
+          onPressed: (){
+            if(context.read<FriendBloc>().state is FriendDisplay
+              ||context.read<FriendBloc>().state is FriendLoading
+            ){
+              context.read<FriendBloc>().add(FriendEventHide());
+            }
+            else{
+              context.read<FriendBloc>().add(FriendEventDisplay());
+            }
+
           },
           icon: const FaIcon(
             FontAwesomeIcons.userPlus,

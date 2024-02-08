@@ -1,6 +1,7 @@
 import 'package:clone_instagram/constants/source_string.dart';
+import 'package:clone_instagram/pages/profile/bloc/friend_bloc.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/list_friend.dart';
 
 class FriendList extends StatelessWidget {
@@ -8,6 +9,28 @@ class FriendList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<FriendBloc, FriendState>(
+      buildWhen: (previous, current) {
+        return previous != current;
+      },
+      builder: (context, state) {
+        if( state is FriendDisplay){
+          return _getFriends();
+        }
+        else if(state is FriendHide || state is FriendInitial){
+          return const SizedBox();
+        }
+        else if(state is FriendLoading){
+          return const Center(child: Padding(
+            padding: EdgeInsets.all(8.0),
+            child: CircularProgressIndicator(),
+          ));
+        }
+        return const SizedBox();
+      },
+    );
+  }
+  Widget _getFriends(){
     return ListView(
       shrinkWrap: true,
       children: [
@@ -20,7 +43,8 @@ class FriendList extends StatelessWidget {
             Spacer(),
             Text(
               SourceString.seeAll,
-              style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.blue, fontWeight: FontWeight.bold),
             )
           ],
         ),
@@ -37,7 +61,8 @@ class FriendList extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Container(
                 width: 140,
-                padding: const EdgeInsets.only(right: 10, left: 10, top: 10),
+                padding: const EdgeInsets.only(
+                    right: 10, left: 10, top: 10),
                 margin: const EdgeInsets.only(bottom: 10, right: 10),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
@@ -50,7 +75,7 @@ class FriendList extends StatelessWidget {
                       CircleAvatar(
                         radius: 32,
                         backgroundImage:
-                            AssetImage(Friend.listFriend[index].image),
+                        AssetImage(Friend.listFriend[index].image),
                       ),
                       const SizedBox(
                         height: 10,
