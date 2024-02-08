@@ -1,5 +1,6 @@
 import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/pages/call_page.dart';
+import 'package:clone_instagram/pages/chat_detail_page.dart';
 import 'package:clone_instagram/pages/chat_page.dart';
 import 'package:clone_instagram/pages/dashboard_page.dart';
 import 'package:clone_instagram/pages/demo_page.dart';
@@ -18,8 +19,8 @@ class CloneInstagramApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const ChatPage(),
-      initialRoute: AppRoute.chat,
+      home: const ChatDetailPage(),
+      initialRoute: AppRoute.chatDetail,
       onGenerateRoute: AppRoute.getAppPage,
     );
   }

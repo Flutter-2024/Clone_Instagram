@@ -9,13 +9,15 @@ class CustomCallItemWidget extends StatelessWidget {
   final String username;
   final String fullName;
   final String imageUrl;
-  const CustomCallItemWidget(
-      {Key? key,
-        required this.username,
-        required this.fullName,
-        this.imageUrl = "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
-      })
-      : super(key: key);
+  final double avatarRadius;
+  const CustomCallItemWidget({
+    super.key,
+    required this.username,
+    required this.fullName,
+    this.imageUrl =
+        "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
+    this.avatarRadius = 28,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CustomCallItemWidget extends StatelessWidget {
           child: CustomAvatarFullNameUsernameItemWidget(
             fullName: fullName,
             username: username,
+            avatarRadius: avatarRadius,
           ),
         ),
         Expanded(
@@ -37,10 +40,11 @@ class CustomCallItemWidget extends StatelessWidget {
           ),
         ),
         Expanded(
-            child: InkWell(
-          onTap: () {},
-          child: const Icon(Icons.video_camera_back_outlined),
-        ))
+          child: InkWell(
+            onTap: () {},
+            child: const Icon(Icons.video_camera_back_outlined),
+          ),
+        )
       ],
     );
   }

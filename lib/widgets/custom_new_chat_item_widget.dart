@@ -5,13 +5,15 @@ class CustomNewChatItemWidget extends StatelessWidget {
   final String username;
   final String fullName;
   final String imageUrl;
+  final double avatarRadius;
   const CustomNewChatItemWidget(
-      {Key? key,
+      {super.key,
         required this.username,
         required this.fullName,
         this.imageUrl = "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
-      })
-      : super(key: key);
+        this.avatarRadius = 28.0,
+      }
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +25,7 @@ class CustomNewChatItemWidget extends StatelessWidget {
           child: CustomAvatarFullNameUsernameItemWidget(
             fullName: fullName,
             username: username,
+            avatarRadius: avatarRadius,
           ),
         ),
         const Expanded(

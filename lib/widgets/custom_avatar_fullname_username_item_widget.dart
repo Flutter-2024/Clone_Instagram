@@ -8,13 +8,15 @@ class CustomAvatarFullNameUsernameItemWidget extends StatelessWidget {
   final String username;
   final String fullName;
   final String imageUrl;
+  final double avatarRadius;
   const CustomAvatarFullNameUsernameItemWidget({
-    Key? key,
+    super.key,
     this.username = '',
     required this.fullName,
     this.imageUrl =
         "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
-  }) : super(key: key);
+    required this.avatarRadius,
+  });
 
   bool get _hasUsername => username.isNotEmpty;
 
@@ -25,7 +27,7 @@ class CustomAvatarFullNameUsernameItemWidget extends StatelessWidget {
         Flexible(
           flex: 3,
           child: CustomActiveAccountWidget(
-            avatarRadius: 28,
+            avatarRadius: avatarRadius,
             imageUrl: imageUrl,
           ),
         ),
