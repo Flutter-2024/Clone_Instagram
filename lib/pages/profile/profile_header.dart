@@ -54,50 +54,23 @@ class ProfileHeaderState extends State<ProfileHeader> {
                         haveAddIcon: true),
                   ),
                   Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          SourceString.numPost,
-                          style: textStyleCustom.textStyleBold(),
-                        ),
-                        Text(
-                          SourceString.post,
-                          style: textStyleCustom.textStyleNormal(),
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                        ),
-                      ],
-                    ),
+                    child: _getInformation(
+                        title: SourceString.numPost,
+                        detail: SourceString.post,
+                    )
                   ),
                   Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          SourceString.numFollowers,
-                          style: textStyleCustom.textStyleBold(),
-                        ),
-                        Text(
-                          SourceString.followers,
-                          style: textStyleCustom.textStyleNormal(),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
+                    child: _getInformation(
+                      title: SourceString.numFollowers,
+                      detail: SourceString.followers,
+                    )
                   ),
                   Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          SourceString.numFollowing,
-                          style: textStyleCustom.textStyleBold(),
-                        ),
-                        Text(
-                          SourceString.following,
-                          style: textStyleCustom.textStyleNormal(),
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                      ],
-                    ),
+                    child: _getInformation(
+                      title: SourceString.numFollowing,
+                      detail: SourceString.following,
+                    )
+
                   ),
                 ]),
             const SizedBox(height: 10),
@@ -130,31 +103,14 @@ class ProfileHeaderState extends State<ProfileHeader> {
     return Row(
       children: [
         Expanded(
-            child: TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-              backgroundColor: const Color(0x1F000000),
-              foregroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12))),
-          child: const Text(SourceString.editProfile),
-        )),
+          child: _getButton(title: SourceString.editProfile),
+        ),
         const SizedBox(
           width: 3,
         ),
-        Expanded(
-            child: TextButton(
-          onPressed: () {},
-          style: TextButton.styleFrom(
-              backgroundColor: const Color(0x1F000000),
-              foregroundColor: Colors.black,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12))),
-          child: const Text(
-            SourceString.shareProfile,
-            overflow: TextOverflow.ellipsis,
-          ),
-        )),
+        Expanded( 
+          child: _getButton(title: SourceString.shareProfile),
+        ),
         IconButton(
           onPressed: (){
             if(context.read<FriendBloc>().state is FriendDisplay
@@ -176,6 +132,38 @@ class ProfileHeaderState extends State<ProfileHeader> {
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12))),
         )
+      ],
+    );
+  }
+  Widget _getButton({required String title}){
+    return TextButton(
+      onPressed: () {},
+      style: TextButton.styleFrom(
+          backgroundColor: const Color(0x1F000000),
+          foregroundColor: Colors.black,
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12)
+          )
+      ),
+      child: Text(
+        title,
+        overflow: TextOverflow.ellipsis,
+      ),
+    );
+  }
+  Widget _getInformation({required String title, required String detail}){
+    return Column(
+      children: [
+        Text(
+          title,
+          style: TextStyleCustom.instance.textStyleBold(),
+        ),
+        Text(
+          detail,
+          style: TextStyleCustom.instance.textStyleNormal(),
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
+        ),
       ],
     );
   }
