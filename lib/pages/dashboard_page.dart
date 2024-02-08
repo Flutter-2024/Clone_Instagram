@@ -1,4 +1,5 @@
-import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/constants/source_string.dart';
+import 'package:clone_instagram/pages/profile/profile_page.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -11,20 +12,20 @@ class DashboardPage extends StatefulWidget {
 class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
   final _selectedBody = [
-    // NewsFeedPage(),
-    // SearchPage(),
-    // AddNewPostPage(),
-    // ReelsPage(),
-    // ProfileDetailPage(),
+    const ProfilePage(),
+    const ProfilePage(),
+    const ProfilePage(),
+    const ProfilePage(),
+    const ProfilePage(),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(SourceString.titleAppBar),
-        ),
-        body: _selectedBody[_selectedIndex] as Widget,
+        // appBar: AppBar(
+        //   title: const Text(SourceString.titleAppBar),
+        // ),
+        body: _selectedBody[_selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
           showUnselectedLabels: false,
