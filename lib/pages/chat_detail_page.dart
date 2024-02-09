@@ -2,9 +2,9 @@ import 'package:clone_instagram/tests/test.dart';
 import 'package:clone_instagram/widgets/custom_chat_message_item.dart';
 import 'package:flutter/material.dart';
 
-import '../config/app_route.dart';
 import '../constants/app_text_style.dart';
 import '../constants/source_string.dart';
+import '../data/chat_message.dart';
 import '../widgets/custom_call_item_widget.dart';
 
 class ChatDetailPage extends StatefulWidget {
@@ -16,9 +16,13 @@ class ChatDetailPage extends StatefulWidget {
 
 class _ChatDetailPageState extends State<ChatDetailPage> {
   bool isTyping = false;
+  String typingMessage = "";
+
+  TextEditingController textEditingController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    TextEditingController textEditingController = TextEditingController();
+    typingMessage = textEditingController.text;
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -48,17 +52,31 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
         body: SafeArea(
           child: Column(
             children: [
-             Flexible(
-                  child: ListView.builder(
-                    itemBuilder: (BuildContext context, int index) {
-                      return CustomChatMessageItem(
-                        message: Test.chatMessageList[index].message,
-                        isSender: Test.chatMessageList[index].senderId == "U001",
-                      );
-                    },
-                    itemCount: Test.chatMessageList.length,
-                  ),
+              Flexible(
+                child: ListView.builder(
+                  reverse: true,
+                  itemBuilder: (BuildContext context, int index) {
+                    Duration timeFromLastMessage = index == Test.chatMessageList.length - 1
+                        ? const Duration()
+                        : Test.chatMessageList.reversed
+                            .toList()[index]
+                            .time
+                            .difference(Test.chatMessageList.reversed
+                                .toList()[index + 1]
+                                .time);
+                    return CustomChatMessageItem(
+                      message:
+                          Test.chatMessageList.reversed.toList()[index].message,
+                      isSender: Test.chatMessageList.reversed
+                              .toList()[index]
+                              .senderId == "U001",
+                      timeFromLastMessage: timeFromLastMessage,
+                      time: Test.chatMessageList.reversed.toList()[index].time,
+                    );
+                  },
+                  itemCount: Test.chatMessageList.length,
                 ),
+              ),
               Card(
                 elevation: 0.0,
                 color: Colors.grey[200],
@@ -70,10 +88,15 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(left: 8.0, right: 16.0),
-                        child: Icon(Icons.camera_alt_rounded),
-                      ),
+                      typingMessage == ""
+                          ? const Padding(
+                              padding: EdgeInsets.only(left: 8.0, right: 16.0),
+                              child: Icon(Icons.camera_alt_rounded),
+                            )
+                          : const Padding(
+                              padding: EdgeInsets.only(left: 8.0, right: 16.0),
+                              child: Icon(Icons.search_rounded),
+                            ),
                       Expanded(
                         child: GestureDetector(
                           onTap: () {},
@@ -94,21 +117,55 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                 isTyping = true;
                               });
                             },
+                            onChanged: (value) {
+                              setState(() {
+                                textEditingController.text = value;
+                              });
+                            },
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 16.0),
-                        child: Icon(Icons.mic_none_outlined),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 16.0),
-                        child: Icon(Icons.image_outlined),
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 0),
-                        child: Icon(Icons.sticky_note_2_outlined),
-                      ),
+                      typingMessage == ""
+                          ? const Padding(
+                              padding: EdgeInsets.only(right: 16.0),
+                              child: Icon(Icons.mic_none_outlined),
+                            )
+                          : const SizedBox(),
+                      typingMessage == ""
+                          ? const Padding(
+                              padding: EdgeInsets.only(right: 16.0),
+                              child: Icon(Icons.image_outlined),
+                            )
+                          : const SizedBox(),
+                      typingMessage == ""
+                          ? const Padding(
+                              padding: EdgeInsets.only(right: 0),
+                              child: Icon(Icons.sticky_note_2_outlined),
+                            )
+                          : Padding(
+                              padding: const EdgeInsets.only(right: 16.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    Test.chatMessageList.add(
+                                      ChatMessage(
+                                        message: typingMessage,
+                                        senderId: "U002",
+                                        receiverId: "U001",
+                                        time: DateTime.now(),
+                                      ),
+                                    );
+                                    textEditingController.clear();
+                                  });
+                                },
+                                child: Text(
+                                  SourceString.send,
+                                  style: AppTextStyle.boldMediumTitle.copyWith(
+                                    color: Colors.blue,
+                                  ),
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 ),

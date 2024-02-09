@@ -24,5 +24,6 @@ class SourceString{
   static const String createGroupChat = "Create Group Chat";
   static const String suggestion = "Suggestion";
   static const String typeMessage = "Type a message...";
+  static const String send = "Send";
 
 }

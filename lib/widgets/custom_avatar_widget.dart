@@ -6,10 +6,10 @@ class CustomAvatarWidget extends StatelessWidget {
   final double radius;
   final String imageUrl;
   const CustomAvatarWidget({
-    Key? key,
+    super.key,
     this.radius = 28,
     this.imageUrl = "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +21,7 @@ class CustomAvatarWidget extends StatelessWidget {
         radius: radius,
         child: ClipOval(
           child: CachedNetworkImage(
-            imageUrl:
-                "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
+            imageUrl: imageUrl,
             fit: BoxFit.cover,
             placeholder: (context, url) => const CircularProgressIndicator(),
             errorWidget: (context, url, error) => const Icon(Icons.error),
