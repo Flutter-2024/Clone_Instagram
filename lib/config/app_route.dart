@@ -41,6 +41,7 @@ class AppRoute {
       case chatDetail:
         return MaterialPageRoute(
           builder: (BuildContext context) => const ChatDetailPage(),
+          settings: RouteSettings(arguments: settings.arguments),
         );
       case home:
         return MaterialPageRoute(

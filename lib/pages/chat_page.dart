@@ -144,11 +144,16 @@ class _ChatPageState extends State<ChatPage> {
               delegate: SliverChildBuilderDelegate(
                 (BuildContext context, int index) {
                   if (index < userListItemCount) {
-                    return CustomMessageItemWidget(
-                      isRead: index >= 5 ? true : false,
-                      username: _userList[index].username,
-                      messageChat: SourceString.messageChat,
-                      messageTime: SourceString.messageTime,
+                    return GestureDetector(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(AppRoute.chatDetail, arguments: _userList[index].id);
+                      },
+                      child: CustomMessageItemWidget(
+                        isRead: index >= 5 ? true : false,
+                        username: _userList[index].username,
+                        messageChat: SourceString.messageChat,
+                        messageTime: SourceString.messageTime,
+                      ),
                     );
                   } else {
                     return Container(
@@ -188,7 +193,8 @@ class _ChatPageState extends State<ChatPage> {
       });
       print("reach the bottom");
     } else if (scrollController.offset <=
-            scrollController.position.minScrollExtent) {
+            scrollController.position.minScrollExtent &&
+        !scrollController.position.outOfRange) {
       setState(() {
         isRefeshing = true;
       });

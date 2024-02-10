@@ -6,13 +6,13 @@ import 'package:intl/intl.dart';
 
 class CustomChatMessageItem extends StatelessWidget {
   final String message;
-  final bool isSender;
+  final bool isContactor;
   final DateTime time;
   final Duration timeFromLastMessage;
   const CustomChatMessageItem({
     super.key,
     required this.message,
-    required this.isSender,
+    required this.isContactor,
     required this.timeFromLastMessage,
     required this.time,
   });
@@ -36,12 +36,12 @@ class CustomChatMessageItem extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Flex(
             mainAxisAlignment:
-                isSender ? MainAxisAlignment.start : MainAxisAlignment.end,
+                isContactor ? MainAxisAlignment.start : MainAxisAlignment.end,
             direction: Axis.horizontal,
             children: <Widget>[
               Row(
                 children: [
-                  isSender ? const CustomAvatarWidget(
+                  isContactor ? const CustomAvatarWidget(
                     imageUrl: "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
                     radius: 16,
                   )
@@ -50,7 +50,7 @@ class CustomChatMessageItem extends StatelessWidget {
                     constraints: BoxConstraints(
                       maxWidth: MediaQuery.of(context).size.width * 0.6,
                     ),
-                    decoration: isSender
+                    decoration: isContactor
                         ? BoxDecoration(
                             color: Colors.grey[200],
                             borderRadius: BorderRadius.circular(24),
@@ -76,7 +76,7 @@ class CustomChatMessageItem extends StatelessWidget {
                     child: Text(
                       message,
                       style: AppTextStyle.normalMediumTitle.copyWith(
-                        color: isSender ? Colors.black : Colors.white,
+                        color: isContactor ? Colors.black : Colors.white,
                       ),
                       textAlign: TextAlign.start,
                     ),

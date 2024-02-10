@@ -17,12 +17,26 @@ class ChatDetailPage extends StatefulWidget {
 class _ChatDetailPageState extends State<ChatDetailPage> {
   bool isTyping = false;
   String typingMessage = "";
+  late String contactorId;
+  late List<ChatMessage> messageList;
 
   TextEditingController textEditingController = TextEditingController();
 
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     typingMessage = textEditingController.text;
+    contactorId = ModalRoute.of(context)!.settings.arguments as String;
+    messageList = Test.chatMessageList.reversed.where((message) {
+      return (message.senderId == "U000" && message.receiverId == contactorId) ||
+          (message.receiverId == "U000" && message.senderId == contactorId);
+    }).toList();
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
@@ -58,7 +72,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                   itemBuilder: (BuildContext context, int index) {
                     Duration timeFromLastMessage = index == Test.chatMessageList.length - 1
                         ? const Duration()
-                        : Test.chatMessageList.reversed
+                        : messageList
                             .toList()[index]
                             .time
                             .difference(Test.chatMessageList.reversed
@@ -66,15 +80,15 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                 .time);
                     return CustomChatMessageItem(
                       message:
-                          Test.chatMessageList.reversed.toList()[index].message,
-                      isSender: Test.chatMessageList.reversed
+                          messageList.toList()[index].message,
+                      isContactor: messageList
                               .toList()[index]
-                              .senderId == "U000",
+                              .senderId == contactorId,
                       timeFromLastMessage: timeFromLastMessage,
-                      time: Test.chatMessageList.reversed.toList()[index].time,
+                      time: messageList.toList()[index].time,
                     );
                   },
-                  itemCount: Test.chatMessageList.length,
+                  itemCount: messageList.length,
                 ),
               ),
               Card(
@@ -150,8 +164,8 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                     Test.chatMessageList.add(
                                       ChatMessage(
                                         message: typingMessage,
-                                        senderId: "U002",
-                                        receiverId: "U000",
+                                        senderId: "U000",
+                                        receiverId: contactorId,
                                         time: DateTime.now(),
                                       ),
                                     );

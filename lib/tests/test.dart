@@ -35,9 +35,9 @@ class Test {
 
   static final List<ChatMessage> chatMessageList = [
     ChatMessage(
-        message: "Hello U002",
+        message: "Hello U001",
         senderId: "U000",
-        receiverId: "U002",
+        receiverId: "U001",
         time: DateTime.parse("2022-01-01 10:00:00")),
     ChatMessage(
         message: "Hello U000",
