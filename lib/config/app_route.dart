@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../pages/call_page.dart';
 import '../pages/chat_detail_page.dart';
 import '../pages/chat_page.dart';
+import '../pages/demo_page.dart';
 import '../pages/new_chat_page.dart';
 import '../pages/search_chat_page.dart';
 
@@ -40,6 +41,10 @@ class AppRoute {
       case chatDetail:
         return MaterialPageRoute(
           builder: (BuildContext context) => const ChatDetailPage(),
+        );
+      case home:
+        return MaterialPageRoute(
+          builder: (BuildContext context) => const HomePage(),
         );
       default:
         return MaterialPageRoute(

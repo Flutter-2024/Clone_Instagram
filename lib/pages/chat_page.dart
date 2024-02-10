@@ -1,10 +1,12 @@
 import 'package:clone_instagram/config/app_route.dart';
 import 'package:clone_instagram/constants/app_text_style.dart';
 import 'package:clone_instagram/constants/source_string.dart';
+import 'package:clone_instagram/service/service.dart';
 import 'package:clone_instagram/tests/test.dart';
 import 'package:clone_instagram/widgets/custom_chat_search_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../data/user.dart';
 import '../widgets/custom_message_item_widget.dart';
 
 class ChatPage extends StatefulWidget {
@@ -18,11 +20,28 @@ class _ChatPageState extends State<ChatPage> {
   final scrollController = ScrollController();
   int page = 1;
   bool isLoadingMore = false;
+  List<User> _userList = [];
+  int userListItemCount = 7;
+
+  bool isRefeshing = false;
 
   @override
   void initState() {
     super.initState();
     scrollController.addListener(_scrollListener);
+    isLoadingMore = true;
+    Service.getUserList().then((userListFromServer) {
+      setState(() {
+        _userList = userListFromServer;
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    scrollController.dispose();
   }
 
   @override
@@ -71,100 +90,114 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ],
       ),
-      body: RefreshIndicator(
-        onRefresh: () {
-          return Future.delayed(const Duration(seconds: 1));
-        },
-        child: Center(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 16.0),
-            height: MediaQuery.of(context).size.height,
-            child: Column(
-              children: [
-                const Expanded(
-                  child: CustomChatSearchWidget(),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: Container(
-                    margin: const EdgeInsets.only(top: 16),
-                    child: ListView(
-                      scrollDirection: Axis.horizontal,
-                      children: Test.storyTest,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        child: CustomScrollView(
+          controller: scrollController,
+          scrollDirection: Axis.vertical,
+          slivers: [
+            isRefeshing == true
+                ? SliverToBoxAdapter(
+                    child: Container(
+                    margin: const EdgeInsets.only(bottom: 8, top: 8),
+                    child: const Center(
+                      child: CircularProgressIndicator(),
                     ),
+                  ))
+                : const SliverToBoxAdapter(child: SizedBox()),
+            const CustomChatSearchWidget(),
+            SliverToBoxAdapter(
+              child: Container(
+                constraints: const BoxConstraints(
+                  minHeight: 100,
+                ),
+                margin: const EdgeInsets.only(top: 16),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: Test.storyTest,
                   ),
                 ),
-                const Expanded(
-                  child: Row(children: [
-                    Text(
-                      SourceString.messages,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    Spacer(),
-                    Text(
-                      SourceString.messageRequests,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16.0,
-                        color: Colors.blue,
-                      ),
-                    ),
-                  ]),
-                ),
-                Expanded(
-                  flex: 8,
-                  child: ListView.builder(
-                    itemCount: isLoadingMore ? 12 : 11,
-                    itemBuilder: (BuildContext context, int index) {
-                      if(index < 10) {
-                        return CustomMessageItemWidget(
-                          isRead: index >= 5 ? true : false,
-                          username: SourceString.username,
-                          messageChat: SourceString.messageChat,
-                          messageTime: SourceString.messageTime,
-                        );
-                      }
-                      else {
-                        return Container(
-                          margin: const EdgeInsets.only(top: 16),
-                          child: const Center(
-                            child: CircularProgressIndicator(),
-                          ),
-                        );
-                      }
-                    },
-                    // physics: const NeverScrollableScrollPhysics(),
-                    // shrinkWrap: true,
-                  ),
-                ),
-              ],
+              ),
             ),
-          ),
+            const SliverToBoxAdapter(
+              child: Row(children: [
+                Text(
+                  SourceString.messages,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  SourceString.messageRequests,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16.0,
+                    color: Colors.blue,
+                  ),
+                ),
+              ]),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  if (index < userListItemCount) {
+                    return CustomMessageItemWidget(
+                      isRead: index >= 5 ? true : false,
+                      username: _userList[index].username,
+                      messageChat: SourceString.messageChat,
+                      messageTime: SourceString.messageTime,
+                    );
+                  } else {
+                    return Container(
+                      margin: const EdgeInsets.only(top: 16),
+                      child: const Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
+                  }
+                },
+                childCount: isLoadingMore == true
+                    ? userListItemCount + 1
+                    : userListItemCount,
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 
   void _scrollListener() {
-    if(isLoadingMore) {
-      return;
-    }
     if (scrollController.offset >= scrollController.position.maxScrollExtent &&
         !scrollController.position.outOfRange) {
       setState(() {
         isLoadingMore = true;
       });
-      page++;
-      setState(() {
-        isLoadingMore = false;
+      if (userListItemCount + 7 < _userList.length) {
+        userListItemCount += 7;
+      } else {
+        userListItemCount = _userList.length;
+      }
+      Future.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          isLoadingMore = false;
+        });
       });
-    }
-    if (scrollController.offset <= scrollController.position.minScrollExtent &&
-        !scrollController.position.outOfRange) {
-      setState(() {});
+      print("reach the bottom");
+    } else if (scrollController.offset <=
+            scrollController.position.minScrollExtent) {
+      setState(() {
+        isRefeshing = true;
+      });
+      Future.delayed(const Duration(seconds: 2), () {
+        setState(() {
+          isRefeshing = false;
+        });
+      });
+      print("reach the top");
     }
   }
 }

@@ -69,7 +69,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                           Test.chatMessageList.reversed.toList()[index].message,
                       isSender: Test.chatMessageList.reversed
                               .toList()[index]
-                              .senderId == "U001",
+                              .senderId == "U000",
                       timeFromLastMessage: timeFromLastMessage,
                       time: Test.chatMessageList.reversed.toList()[index].time,
                     );
@@ -151,7 +151,7 @@ class _ChatDetailPageState extends State<ChatDetailPage> {
                                       ChatMessage(
                                         message: typingMessage,
                                         senderId: "U002",
-                                        receiverId: "U001",
+                                        receiverId: "U000",
                                         time: DateTime.now(),
                                       ),
                                     );

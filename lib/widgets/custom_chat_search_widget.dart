@@ -16,54 +16,9 @@ class CustomChatSearchWidget extends StatefulWidget {
 }
 
 class _CustomChatSearchWidgetState extends State<CustomChatSearchWidget> {
-  // @override
-  // Widget build(BuildContext context) {
-  //   return SearchAnchor(
-  //     builder: (BuildContext context, SearchController controller) {
-  //       return SearchBar(
-  //         controller: controller,
-  //         onTap: () {
-  //           controller.openView();
-  //         },
-  //         onChanged: (_) {},
-  //         leading: const Icon(
-  //           Icons.search,
-  //           color: Colors.grey,
-  //         ),
-  //         padding: const MaterialStatePropertyAll<EdgeInsets>(
-  //             EdgeInsets.symmetric(horizontal: 16.0)),
-  //         hintText: SourceString.search,
-  //         hintStyle: MaterialStateProperty.all<TextStyle>(
-  //           const TextStyle(
-  //             color: Colors.grey,
-  //           ),
-  //         ),
-  //         backgroundColor: MaterialStateProperty.all<Color>(
-  //           Colors.grey.shade200,
-  //         ),
-  //         elevation: MaterialStateProperty.all<double>(0.0),
-  //         constraints: BoxConstraints(
-  //           minHeight: 40.0,
-  //           maxWidth: MediaQuery.of(context).size.width,
-  //         ),
-  //         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-  //           RoundedRectangleBorder(
-  //             borderRadius: BorderRadius.circular(8.0),
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //     suggestionsBuilder: (BuildContext context, SearchController controller){
-  //       return List<CustomNewChatItemWidget>.generate(10, (int index) {
-  //         return const CustomNewChatItemWidget(username: "", fullName: "Full",);
-  //       });
-  //     },
-  //   );
-  // }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -72,23 +27,29 @@ class _CustomChatSearchWidgetState extends State<CustomChatSearchWidget> {
       elevation: 0.0,
       color: Colors.grey[200],
       child: Container(
+        height: 40.0,
         padding: const EdgeInsets.all(8.0),
         child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 16.0),
-                child: Icon(Icons.search),
+              const Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(left: 8.0, right: 16.0),
+                  child: Icon(Icons.search),
+                ),
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed(AppRoute.searchChat);
-                },
-                child: Text(
-                  SourceString.search,
-                  style: AppTextStyle.normalMediumTitle.copyWith(
-                    color: Colors.grey,
-                  )
+              Expanded(
+                flex: 6,
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamed(AppRoute.searchChat);
+                  },
+                  child: Text(
+                    SourceString.search,
+                    style: AppTextStyle.normalMediumTitle.copyWith(
+                      color: Colors.grey,
+                    )
+                  ),
                 ),
               ),
             ],
@@ -99,9 +60,9 @@ class _CustomChatSearchWidgetState extends State<CustomChatSearchWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _buildSearchBox(),
-      resizeToAvoidBottomInset: false,
+    return SliverToBoxAdapter(
+      child: _buildSearchBox(),
+      // resizeToAvoidBottomInset: false,
     );
   }
 }

@@ -5,7 +5,7 @@ class User {
   final String? imageUrl;
 
   User({
-    this.id = "U001", // Default value for "id
+    this.id = "U000", // Default value for "id
     required this.fullName,
     required this.username,
     this.imageUrl,
