@@ -1,13 +1,8 @@
 import 'package:clone_instagram/constants/app_text_style.dart';
 import 'package:clone_instagram/constants/source_string.dart';
-import 'package:clone_instagram/tests/test.dart';
-import 'package:clone_instagram/widgets/custom_active_account_widget.dart';
-import 'package:clone_instagram/widgets/custom_avatar_widget.dart';
 import 'package:clone_instagram/widgets/custom_call_item_widget.dart';
-import 'package:clone_instagram/widgets/custom_chat_search_widget.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/custom_message_item_widget.dart';
 
 class CallPage extends StatefulWidget {
   const CallPage({super.key});

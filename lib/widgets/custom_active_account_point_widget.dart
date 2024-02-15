@@ -4,10 +4,10 @@ class CustomActivePointWidget extends StatelessWidget {
   final double width;
   final double height;
   const CustomActivePointWidget({
-    Key? key,
+    super.key,
     this.width = 20,
     this.height = 20,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

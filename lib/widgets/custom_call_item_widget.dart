@@ -1,9 +1,5 @@
-import 'package:clone_instagram/constants/app_text_style.dart';
-import 'package:clone_instagram/constants/source_string.dart';
 import 'package:clone_instagram/widgets/custom_avatar_fullname_username_item_widget.dart';
 import 'package:flutter/material.dart';
-import 'custom_active_account_widget.dart';
-import 'custom_avatar_widget.dart';
 
 class CustomCallItemWidget extends StatelessWidget {
   final String username;

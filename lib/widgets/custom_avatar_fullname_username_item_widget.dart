@@ -1,8 +1,6 @@
 import 'package:clone_instagram/constants/app_text_style.dart';
-import 'package:clone_instagram/constants/source_string.dart';
 import 'package:flutter/material.dart';
 import 'custom_active_account_widget.dart';
-import 'custom_avatar_widget.dart';
 
 class CustomAvatarFullNameUsernameItemWidget extends StatelessWidget {
   final String username;

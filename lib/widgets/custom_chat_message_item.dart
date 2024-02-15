@@ -1,6 +1,5 @@
 import 'package:clone_instagram/constants/app_text_style.dart';
 import 'package:clone_instagram/widgets/custom_avatar_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

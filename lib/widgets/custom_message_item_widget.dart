@@ -1,18 +1,13 @@
-import 'dart:ui';
-
 import 'package:clone_instagram/constants/app_text_style.dart';
-import 'package:clone_instagram/constants/source_string.dart';
 import 'package:flutter/material.dart';
 import 'custom_active_account_widget.dart';
-import 'custom_avatar_widget.dart';
 
 class CustomMessageItemWidget extends StatelessWidget {
   final bool isRead;
   final String username;
   final String messageChat;
   final String messageTime;
-  const CustomMessageItemWidget({Key? key, this.isRead = false, required this.username, required this.messageChat, required this.messageTime})
-      : super(key: key);
+  const CustomMessageItemWidget({super.key, this.isRead = false, required this.username, required this.messageChat, required this.messageTime});
 
   TextStyle get _textStyle => isRead
       ? AppTextStyle.normalSmallTitle

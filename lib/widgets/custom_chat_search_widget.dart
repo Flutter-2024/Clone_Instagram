@@ -1,15 +1,11 @@
 import 'package:clone_instagram/constants/app_text_style.dart';
-import 'package:clone_instagram/widgets/custom_new_chat_item_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../config/app_route.dart';
 import '../constants/source_string.dart';
-import '../service/service.dart';
-import '../data/user.dart';
-import '../utils/debouncer.dart';
 
 class CustomChatSearchWidget extends StatefulWidget {
-  const CustomChatSearchWidget({Key? key}) : super(key: key);
+  const CustomChatSearchWidget({super.key});
 
   @override
   State<CustomChatSearchWidget> createState() => _CustomChatSearchWidgetState();

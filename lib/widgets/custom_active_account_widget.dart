@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clone_instagram/widgets/custom_active_account_point_widget.dart';
 import 'package:clone_instagram/widgets/custom_note_of_account_widget.dart';
 import 'package:flutter/material.dart';
@@ -13,13 +12,13 @@ class CustomActiveAccountWidget extends StatelessWidget {
   final double avatarRadius;
 
   const CustomActiveAccountWidget({
-    Key? key,
+    super.key,
     this.isActive = false,
     this.noteContent = "",
     this.username = "",
     this.imageUrl = "https://static-00.iconduck.com/assets.00/flutter-icon-2048x2048-ufx4idi8.png",
     this.avatarRadius = 45,
-  }) : super(key: key);
+  });
 
   bool get _hasNote => noteContent.isNotEmpty;
   bool get _hasUsername => username.isNotEmpty;

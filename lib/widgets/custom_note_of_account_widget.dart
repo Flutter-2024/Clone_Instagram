@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class CustomNoteOfAccountWidget extends StatelessWidget {
   final String noteContent;
   const CustomNoteOfAccountWidget({
-    Key? key,
+    super.key,
     this.noteContent = "",
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

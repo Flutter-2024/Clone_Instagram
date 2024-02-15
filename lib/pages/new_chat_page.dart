@@ -1,10 +1,7 @@
 import 'package:clone_instagram/constants/app_text_style.dart';
 import 'package:clone_instagram/constants/source_string.dart';
-import 'package:clone_instagram/widgets/custom_avatar_fullname_username_item_widget.dart';
 import 'package:clone_instagram/widgets/custom_new_chat_item_widget.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/custom_message_item_widget.dart';
 
 class NewChatPage extends StatefulWidget {
   const NewChatPage({super.key});

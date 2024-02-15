@@ -1,5 +1,4 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:clone_instagram/constants/source_string.dart';
 import 'package:flutter/material.dart';
 
 class CustomAvatarWidget extends StatelessWidget {
