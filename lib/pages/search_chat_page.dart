@@ -42,54 +42,13 @@ class _SearchChatPageState extends State<SearchChatPage> {
     );
   }
 
-  Widget _buildBody() {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0),
-      child: Expanded(
-        child: _searchController.text.isEmpty
-            ? _buildUserList(_allUserList)
-            : _buildUserList(_searchResultList),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            leading: InkWell(
-              onTap: () {
-                Navigator.pop(context);
-              },
-              child: const Padding(
-                padding: EdgeInsets.only(left: 8.0, right: 8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      Icons.arrow_back,
-                      size: 30,
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            title: TextField(
-              controller: _searchController,
-              decoration: InputDecoration(
-                hintText: 'Search',
-                border: InputBorder.none,
-                hintStyle: AppTextStyle.normalMediumTitle.copyWith(
-                  color: Colors.grey,
-                ),
-              ),
-              onChanged: onSearchTextChanged,
-            ),
-            centerTitle: true,
-          ),
+          appBar: _appBar(),
           body: _buildBody(),
         ),
       ),
@@ -103,11 +62,56 @@ class _SearchChatPageState extends State<SearchChatPage> {
           _searchResultList = _allUserList;
         } else {
           _searchResultList = _allUserList
-              .where((user) => (user.username.toLowerCase().contains(text.toLowerCase()) ||
-                  user.fullName.toLowerCase().contains(text.toLowerCase())))
+              .where((user) =>
+                  (user.username.toLowerCase().contains(text.toLowerCase()) ||
+                      user.fullName.toLowerCase().contains(text.toLowerCase())))
               .toList();
         }
       });
     });
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      leading: InkWell(
+        onTap: () {
+          Navigator.pop(context);
+        },
+        child: const Padding(
+          padding: EdgeInsets.only(left: 8.0, right: 8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                Icons.arrow_back,
+                size: 30,
+              ),
+            ],
+          ),
+        ),
+      ),
+      title: TextField(
+        controller: _searchController,
+        decoration: InputDecoration(
+          hintText: 'Search',
+          border: InputBorder.none,
+          hintStyle: AppTextStyle.normalMediumTitle.copyWith(
+            color: Colors.grey,
+          ),
+        ),
+        onChanged: onSearchTextChanged,
+      ),
+      centerTitle: true,
+    );
+  }
+  Widget _buildBody() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Expanded(
+        child: _searchController.text.isEmpty
+            ? _buildUserList(_allUserList)
+            : _buildUserList(_searchResultList),
+      ),
+    );
   }
 }

@@ -48,130 +48,8 @@ class _ChatPageState extends State<ChatPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        leading: InkWell(
-          onTap: () {},
-          child: const Padding(
-            padding: EdgeInsets.only(left: 16.0, right: 16.0),
-            child: Icon(
-              Icons.arrow_back,
-              size: 30,
-            ),
-          ),
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          textBaseline: TextBaseline.alphabetic,
-          children: [
-            Text(
-              SourceString.username,
-              style: AppTextStyle.boldLargeTitle,
-            ),
-            const Icon(
-              Icons.keyboard_arrow_down_outlined,
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRoute.call);
-            },
-            icon: const Icon(Icons.video_camera_front_outlined),
-            iconSize: 30,
-          ),
-          IconButton(
-            onPressed: () {
-              Navigator.of(context).pushNamed(AppRoute.newChat);
-            },
-            icon: const Icon(Icons.note_alt_outlined),
-            iconSize: 30,
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
-        child: CustomScrollView(
-          controller: scrollController,
-          scrollDirection: Axis.vertical,
-          slivers: [
-            isRefeshing == true
-                ? SliverToBoxAdapter(
-                    child: Container(
-                    margin: const EdgeInsets.only(bottom: 8, top: 8),
-                    child: const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ))
-                : const SliverToBoxAdapter(child: SizedBox()),
-            const CustomChatSearchWidget(),
-            SliverToBoxAdapter(
-              child: Container(
-                constraints: const BoxConstraints(
-                  minHeight: 100,
-                ),
-                margin: const EdgeInsets.only(top: 16),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: Test.storyTest,
-                  ),
-                ),
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: Row(children: [
-                Text(
-                  SourceString.messages,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                  ),
-                ),
-                Spacer(),
-                Text(
-                  SourceString.messageRequests,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                    color: Colors.blue,
-                  ),
-                ),
-              ]),
-            ),
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (BuildContext context, int index) {
-                  if (index < userListItemCount) {
-                    return GestureDetector(
-                      onTap: () {
-                        Navigator.of(context).pushNamed(AppRoute.chatDetail, arguments: _userList[index].id);
-                      },
-                      child: CustomMessageItemWidget(
-                        isRead: index >= 5 ? true : false,
-                        username: _userList[index].username,
-                        messageChat: SourceString.messageChat,
-                        messageTime: SourceString.messageTime,
-                      ),
-                    );
-                  } else {
-                    return Container(
-                      margin: const EdgeInsets.only(top: 16),
-                      child: const Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  }
-                },
-                childCount: isLoadingMore == true
-                    ? userListItemCount + 1
-                    : userListItemCount,
-              ),
-            ),
-          ],
-        ),
-      ),
+      appBar: _appBar(),
+      body: _body(),
     );
   }
 
@@ -205,5 +83,134 @@ class _ChatPageState extends State<ChatPage> {
       });
       print("reach the top");
     }
+  }
+
+  AppBar _appBar() {
+    return AppBar(
+      leading: InkWell(
+        onTap: () {},
+        child: const Padding(
+          padding: EdgeInsets.only(left: 16.0, right: 16.0),
+          child: Icon(
+            Icons.arrow_back,
+            size: 30,
+          ),
+        ),
+      ),
+      title: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        textBaseline: TextBaseline.alphabetic,
+        children: [
+          Text(
+            SourceString.username,
+            style: AppTextStyle.boldLargeTitle,
+          ),
+          const Icon(
+            Icons.keyboard_arrow_down_outlined,
+          ),
+        ],
+      ),
+      actions: [
+        IconButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(AppRoute.call);
+          },
+          icon: const Icon(Icons.video_camera_front_outlined),
+          iconSize: 30,
+        ),
+        IconButton(
+          onPressed: () {
+            Navigator.of(context).pushNamed(AppRoute.newChat);
+          },
+          icon: const Icon(Icons.note_alt_outlined),
+          iconSize: 30,
+        ),
+      ],
+    );
+  }
+  Padding _body() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: CustomScrollView(
+        controller: scrollController,
+        scrollDirection: Axis.vertical,
+        slivers: [
+          isRefeshing == true
+              ? SliverToBoxAdapter(
+              child: Container(
+                margin: const EdgeInsets.only(bottom: 8, top: 8),
+                child: const Center(
+                  child: CircularProgressIndicator(),
+                ),
+              ))
+              : const SliverToBoxAdapter(child: SizedBox()),
+          const CustomChatSearchWidget(),
+          SliverToBoxAdapter(
+            child: Container(
+              constraints: const BoxConstraints(
+                minHeight: 100,
+              ),
+              margin: const EdgeInsets.only(top: 16),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: Test.storyTest,
+                ),
+              ),
+            ),
+          ),
+          const SliverToBoxAdapter(
+            child: Row(children: [
+              Text(
+                SourceString.messages,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                ),
+              ),
+              Spacer(),
+              Text(
+                SourceString.messageRequests,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0,
+                  color: Colors.blue,
+                ),
+              ),
+            ]),
+          ),
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                if (index < userListItemCount) {
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(AppRoute.chatDetail, arguments: _userList[index].id);
+                    },
+                    child: CustomMessageItemWidget(
+                      isRead: index >= 5 ? true : false,
+                      username: _userList[index].username,
+                      messageChat: SourceString.messageChat,
+                      messageTime: SourceString.messageTime,
+                    ),
+                  );
+                } else {
+                  return Container(
+                    margin: const EdgeInsets.only(top: 16),
+                    child: const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  );
+                }
+              },
+              childCount: isLoadingMore == true
+                  ? userListItemCount + 1
+                  : userListItemCount,
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
