@@ -1,4 +1,4 @@
-import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/constants/source_string.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -21,9 +21,6 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text(SourceString.titleAppBar),
-        ),
         body: _selectedBody[_selectedIndex] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           showSelectedLabels: false,
