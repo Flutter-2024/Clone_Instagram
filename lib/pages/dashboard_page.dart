@@ -1,4 +1,5 @@
-import 'package:clone_instagram/constants/SourceString.dart';
+import 'package:clone_instagram/constants/source_string.dart';
+import 'package:clone_instagram/pages/search_page/search_page.dart';
 import 'package:flutter/material.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -12,7 +13,11 @@ class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
   final _selectedBody = [
     // NewsFeedPage(),
-    // SearchPage(),
+    SearchPage(),
+    SearchPage(),
+    SearchPage(),
+    SearchPage(),
+    SearchPage(),
     // AddNewPostPage(),
     // ReelsPage(),
     // ProfileDetailPage(),
